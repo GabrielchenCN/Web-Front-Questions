@@ -245,6 +245,8 @@ HTML5?
 
 -  null，undefined的区别？
 
+-  用过typeOf 和 instanceOf吗？ 说说他们的区别
+
 -  写一个通用的事件侦听器函数(机试题)。
 
 -  ["1", "2", "3"].map(parseInt) 答案是多少？
