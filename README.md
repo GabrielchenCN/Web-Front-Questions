@@ -16,7 +16,7 @@
 
 ## <a name='questions'>前言</a>
 
- [前言](https://github.com/GabrielchenCN/Web-Front-Questions/blob/master/QUESTIONS.md "答案")
+ [答案](https://github.com/GabrielchenCN/Web-Front-Questions/blob/master/QUESTIONS.md "答案")
 <!--## <a name='preface'>前言</a>
 
  [前言](https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions "前言")-->
