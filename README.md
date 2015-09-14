@@ -140,11 +140,15 @@ HTML5?
 
 - display:inline-block 什么时候会显示间隙？(携程)
 
+- display:inline-block 兼容IE的hack(美的)
+
 - overflow: scroll时不能平滑滚动的问题怎么处理？
 
 ## <a name='js'>JavaScript</a>
 
 -  用原生JavaScript的实现过什么功能吗？
+
+-  JavaScript 实现数组去重   
 
 -  介绍JavaScript的基本数据类型。
 
