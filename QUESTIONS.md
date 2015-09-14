@@ -366,11 +366,28 @@ HTML5?
 
 - 阅读javascript代码，回答问题(输出是什么，为什么？)
 
-		var a = {n: 1}
+		var a = {n: 1}                 
 		var b = a;
 		a.x = a = {n: 2}
 		console.log(a.x);
-		console.log(b.x)
+		console.log(b.x);
+		
+		详解见评论：http://www.iteye.com/topic/785445
+		//自己都说不通了。。
+		第一、二行表示a\b 同时指向{n:1}
+		第三行 表达式解析为  a.x = (a = {n: 2})
+		执行顺序是左到右，所以有
+		a.x=Expression 时，a={n:1} ---->{n:1}.x=Expression，此处是{n:1}内存块被赋值了x
+		执行a = {n: 2}时，a被指向到 {n: 2}，此时b=a，也被指向{n:2};
+		console.log(a.x);时 a={n: 2} 不是{n:1} 所以没有.x属性 ,a.x 未定义
+		console.log(b.x);时 a={n: 2}
+		
+		解释
+		var a,b,c,d;  
+		a=b=c=d={a:1};  
+		a.x=a=b.y=b=c.z=c={}  
+		console.log(a,b,c,d) 
+		
 
 ## <a name='other'>其他问题</a>
 
