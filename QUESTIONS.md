@@ -358,12 +358,14 @@ HTML5?
 - 简述一下 Handlerbars 的对模板的基本处理流程， 如何编译的？如何缓存的？
 
 - 解释以下javascript代码()
+ 
 		var F = function(){};
 		Object.prototype.a = function(){};
 		Function.prototype.b = function(){};
 		var f = new F();
 
 - 解释以下javascript代码()
+
 		var a = {n: 1}
 		var b = a;
 		a.x = a = {n: 2}
