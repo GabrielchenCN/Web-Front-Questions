@@ -357,14 +357,14 @@ HTML5?
 
 - 简述一下 Handlerbars 的对模板的基本处理流程， 如何编译的？如何缓存的？
 
-- 解释以下javascript代码()
+- 阅读javascript代码，回答问题(是否通过f取到a和b，如果可以那怎么获取，如果不可以请说出原因)
  
 		var F = function(){};
 		Object.prototype.a = function(){};
 		Function.prototype.b = function(){};
 		var f = new F();
 
-- 解释以下javascript代码()
+- 阅读javascript代码，回答问题(输出是什么，为什么？)
 
 		var a = {n: 1}
 		var b = a;
