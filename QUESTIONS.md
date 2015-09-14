@@ -357,6 +357,19 @@ HTML5?
 
 - 简述一下 Handlerbars 的对模板的基本处理流程， 如何编译的？如何缓存的？
 
+- 解释以下javascript代码()
+		var F = function(){};
+		Object.prototype.a = function(){};
+		Function.prototype.b = function(){};
+		var f = new F();
+
+- 解释以下javascript代码()
+		var a = {n: 1}
+		var b = a;
+		a.x = a = {n: 2}
+		console.log(a.x);
+		console.log(b.x)
+
 ## <a name='other'>其他问题</a>
 
 - 原来公司工作流程是怎么样的，如何与其他人协作的？如何夸部门合作的？
