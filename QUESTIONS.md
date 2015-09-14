@@ -103,6 +103,23 @@ HTML5?
 
 - display有哪些值？说明他们的作用。position的值relative和absolute定位原点是？
 
+- display:none;overflow：hidden;与visibility:hidden;的区别？
+
+		CSS display:none;
+		使用该属性后，HTML元素（对象）的宽度、高度等各种属性值都将“丢失”;
+		visibility:hidden;
+		使用该属性后，HTML元素（对象）仅仅是在视觉上看不见（完全透明），而它所占据的空间位置仍然存在，也即是说它仍具有高度、宽度等属性值。
+		overflow：hidden;
+		是让超出的文本隐藏，就是在设置该属性的时候他会根据你设置的宽高把多余的那部分剪切掉
+
+- overflow的属性有哪些？
+
+		visible	默认值。内容不会被修剪，会呈现在元素框之外。
+		hidden	内容会被修剪，并且其余内容是不可见的。
+		scroll	内容会被修剪，但是浏览器会显示滚动条以便查看其余的内容。
+		auto	如果内容被修剪，则浏览器会显示滚动条以便查看其余的内容。
+		inherit	规定应该从父元素继承 overflow 属性的值。
+
 - CSS3有哪些新特性（包含哪些模块）？
 
 - 请解释一下CSS3的Flexbox（弹性盒布局模型）,以及适用场景？
