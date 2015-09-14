@@ -97,6 +97,8 @@ HTML5?
 
 - CSS3新增伪类有那些？
 
+- CSS3有哪些新特性（包含哪些模块）？
+
 - 如何居中div？如何居中一个浮动元素？
 
 - 介绍一下标准的CSS的盒子模型？与低版本IE的盒子模型有什么不同的？
@@ -120,7 +122,7 @@ HTML5?
 		auto	如果内容被修剪，则浏览器会显示滚动条以便查看其余的内容。
 		inherit	规定应该从父元素继承 overflow 属性的值。
 
-- CSS3有哪些新特性（包含哪些模块）？
+
 
 - 请解释一下CSS3的Flexbox（弹性盒布局模型）,以及适用场景？
 
@@ -189,6 +191,33 @@ HTML5?
 - display:inline-block 兼容IE的hack(美的)
 
 - overflow: scroll时不能平滑滚动的问题怎么处理？
+
+- overflow: auto时页面进度条出现后页面不跳动？
+
+		CSS3计算calc和vw单位巧妙实现滚动条出现页面不跳动
+		很简单，只要一行代码就搞定了：
+		.wrap-outer {
+		    margin-left: calc(100vw - 100%);
+		}
+		或者：
+		.wrap-outer {
+		    padding-left: calc(100vw - 100%);
+		}
+		然后就可以庆祝放鞭炮啦！！
+		
+		首先，.wrap-outer指的是居中定宽主体的父级，如果没有，创建一个
+		（使用主体也是可以实现类似效果，不过本着宽度分离原则，不推荐）；
+		
+		然后，calc是CSS3中的计算，IE10+浏览器支持，IE9浏览器基本支持
+		(不能用在background-position上)；
+		
+		最后，100vw相对于浏览器的window.innerWidth，是浏览器的内部宽度，
+		注意，滚动条宽度也计算在内！而100%是可用宽度，是不含滚动条的宽度。
+		于是，calc(100vw - 100%)就是浏览器滚动条的宽度大小（如果有，如
+		果没有滚动条则是0）！左右都有一个滚动条宽度（或都是0）被占用，
+		主体内容就可以永远居中浏览器啦，从而没有任何跳动！
+		demo :http://www.zhangxinxu.com/study/201501/body-scrollbar-no-jump.html  支持：IE9+以及其他现代浏览器。
+		原作者：http://www.zhangxinxu.com/wordpress/?p=4552
 
 ## <a name='js'>JavaScript</a>
 
