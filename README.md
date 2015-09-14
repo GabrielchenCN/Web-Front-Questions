@@ -1,4 +1,6 @@
 #前端开发面试题 （题目列表页）
+- 部分转载自：http://weibo.com/920802999
+- https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Questions-and-Answers
 
 
 ## <a name='list'>目录</a>
@@ -395,8 +397,8 @@ HTML5?
 
 
 
-###更新时间:  2015/7/24
+###更新时间:  2015/9/14
 
 
 	
-	资料答案不够正确和全面，欢迎欢迎Star和提交issues。我的微博：http://weibo.com/920802999
+	
