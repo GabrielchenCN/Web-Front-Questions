@@ -234,6 +234,14 @@ HTML5?
 -  JavaScript有几种类型值？（堆：原始值和 栈：引用值），你能画一下他们的内存图吗？
 
 -  Javascript如何实现继承？
+  
+-  event.target与event.currentTarget 的含义和区别
+  
+		target	返回触发此事件的元素（事件的目标节点）。
+		（event.target 属性在实现事件代理时会被用到。）
+		currentTarget	返回其事件监听器触发该事件的元素
+		（该属性总是指向被绑定事件处理器的元素，将同一个事件处理器绑定到多个元素）。
+		对于IE8及其以下均要做兼容处理
 
 -  解释一下Javascript的事件代理？
  		
@@ -257,6 +265,7 @@ HTML5?
 -  null，undefined的区别？
 
 -  用过typeOf 和 instanceOf吗？ 说说他们的区别
+
 
 -  href="javascript:; onclick="javascript:return false;" 这样写的作用是什么？
 
