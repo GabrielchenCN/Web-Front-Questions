@@ -256,12 +256,13 @@ HTML5?
 
 - What exactly is the difference between undefined and  void 0 ?
 
-		The difference is that some browsers allow you to overwrite the value of undefined. 
+		The difference is that some browsers allow you to overwrite the value of undefined.(现代浏览器不允许这样做) 
 		However, void(anything) always returns real undefined.
 		
 		undefined = 1;
 		console.log(!!undefined); //true
 		console.log(!!void(0)); //false
+		
 
 -  写一个通用的事件侦听器函数(机试题)。
 
