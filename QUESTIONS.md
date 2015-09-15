@@ -247,6 +247,22 @@ HTML5?
 
 -  用过typeOf 和 instanceOf吗？ 说说他们的区别
 
+-  href="javascript:; onclick="javascript:return false;" 这样写的作用是什么？
+
+		href="javascript:;" 阻止浏览器默认操作
+		
+		onclick="javascript:return false;" 修复IE6下的BUG
+		其中javascript是一个伪协议
+
+- What exactly is the difference between undefined and  void 0 ?
+
+		The difference is that some browsers allow you to overwrite the value of undefined. 
+		However, void(anything) always returns real undefined.
+		
+		undefined = 1;
+		console.log(!!undefined); //true
+		console.log(!!void(0)); //false
+
 -  写一个通用的事件侦听器函数(机试题)。
 
 -  ["1", "2", "3"].map(parseInt) 答案是多少？
