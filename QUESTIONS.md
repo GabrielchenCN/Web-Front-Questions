@@ -253,6 +253,8 @@ HTML5?
 		
 		onclick="javascript:return false;" 修复IE6下的BUG
 		其中javascript是一个伪协议
+		注意，虽然这么做是可行的，但利用 javascript: 伪协议来执行JavaScript代码是不推荐的，
+		推荐的做法是为链接元素绑定 click 事件。
 
 - What exactly is the difference between undefined and  void 0 ?
 
