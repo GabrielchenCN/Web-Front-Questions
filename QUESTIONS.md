@@ -427,6 +427,9 @@ HTML5?
 		a.x=a=b.y=b=c.z=c={}  
 		console.log(a,b,c,d) 
 		
+		
+- 购物车的实现原理？
+		
 
 ## <a name='other'>其他问题</a>
 
