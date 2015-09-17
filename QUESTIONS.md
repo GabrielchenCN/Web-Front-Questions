@@ -378,6 +378,7 @@ HTML5?
 
 -  知道各种JS框架(Angular, Backbone, Ember, React, Meteor, Knockout...)么? 能讲出他们各自的优点和缺点么?
 -  Underscore 对哪些 JS 原生对象进行了扩展以及提供了哪些好用的函数方法？
+-  angularJS的双向绑定是如何实现的（它的原理是什么）？
 
 -  Node.js的适用场景？
 
