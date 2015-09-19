@@ -216,10 +216,9 @@ HTML5?
 		于是，calc(100vw - 100%)就是浏览器滚动条的宽度大小（如果有，如
 		果没有滚动条则是0）！左右都有一个滚动条宽度（或都是0）被占用，
 		主体内容就可以永远居中浏览器啦，从而没有任何跳动！
-		[demo](http://www.zhangxinxu.com/study/201501/body-scrollbar-no-jump.html "demo")
-		<a href = "http://www.zhangxinxu.com/wordpress/?p=4552">demo</a>
-		支持：IE9+以及其他现代浏览器。
-		[原作者](http://www.zhangxinxu.com/wordpress/?p=4552 "原作者")
+[demo](http://www.zhangxinxu.com/study/201501/body-scrollbar-no-jump.html "demo")
+支持：IE9+以及其他现代浏览器。
+[原作者](http://www.zhangxinxu.com/wordpress/?p=4552 "原作者")
 		
 
 ## <a name='js'>JavaScript</a>
@@ -296,7 +295,7 @@ HTML5?
 		[1,NaN,NaN]
 		因为 parseInt 需要两个参数 (val, radix)，其中 radix 表示解析时用的基数。map 传了 3 个 (element, index, array)，对应的 radix 不合法导致解析失败
 		
-		[解析](http://blog.csdn.net/freshlover/article/details/19034079 "解析")
+[解析](http://blog.csdn.net/freshlover/article/details/19034079 "解析")
 
 
 -  关于事件，IE与火狐的事件机制有什么区别？ 如何阻止冒泡？
@@ -339,7 +338,8 @@ HTML5?
 		1. 对于依赖的模块，AMD 是提前执行，CMD 是延迟执行。不过 RequireJS 从 2.0 开始，也改成可以延迟执行（根据写法不同，处理方式不同）。CMD 推崇 as lazy as possible.
 		2. CMD 推崇依赖就近，AMD 推崇依赖前置。
 		3. AMD 的 API 默认是一个当多个用，CMD 的 API 严格区分，推崇职责单一。比如 AMD 里，require 分全局 require 和局部 require，都叫 require。CMD 里，没有全局 require，而是根据模块系统的完备性，提供 seajs.use 来实现模块系统的加载启动。CMD 里，每个 API 都简单纯粹。
-		4.知乎 CMD 作者玉伯回答[详解见评论](http://www.zhihu.com/question/20351507/answer/14859415) 
+		4.知乎 CMD 作者玉伯回答
+[详解见评论](http://www.zhihu.com/question/20351507/answer/14859415) 
 
 -  异步加载的方式有哪些？
 
@@ -405,7 +405,7 @@ HTML5?
 		浏览器Location变更事件 ($location)
 		Timer事件($timeout, $interval)
 		执行$digest()或$apply()
-		[知乎](http://www.zhihu.com/question/23275373 "知乎")
+[知乎](http://www.zhihu.com/question/23275373 "知乎")
 		  
    
 
@@ -441,7 +441,7 @@ HTML5?
 		console.log(a.x);
 		console.log(b.x);
 		
-		[详解见评论](http://www.iteye.com/topic/785445 "详解见评论")
+		
 		//自己都说不通了。。
 		第一、二行表示a\b 同时指向{n:1}
 		第三行 表达式解析为  a.x = (a = {n: 2})
@@ -450,12 +450,13 @@ HTML5?
 		执行a = {n: 2}时，a被指向到 {n: 2}，此时b=a，也被指向{n:2};
 		console.log(a.x);时 a={n: 2} 不是{n:1} 所以没有.x属性 ,a.x 未定义
 		console.log(b.x);时 a={n: 2}
-		
+
 		解释
 		var a,b,c,d;  
 		a=b=c=d={a:1};  
 		a.x=a=b.y=b=c.z=c={}  
 		console.log(a,b,c,d) 
+[详解见评论](http://www.iteye.com/topic/785445 "详解见评论")
 		
 		
 - 购物车的实现原理？
