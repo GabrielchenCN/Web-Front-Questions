@@ -290,6 +290,12 @@ HTML5?
 
 -  ["1", "2", "3"].map(parseInt) 答案是多少？
 
+		[1,NaN,NaN]
+		因为 parseInt 需要两个参数 (val, radix)，其中 radix 表示解析时用的基数。map 传了 3 个 (element, index, array)，对应的 radix 不合法导致解析失败
+		
+		(http://blog.csdn.net/freshlover/article/details/19034079 "解析")_
+
+
 -  关于事件，IE与火狐的事件机制有什么区别？ 如何阻止冒泡？
 
 -  什么是闭包（closure），为什么要用它？
