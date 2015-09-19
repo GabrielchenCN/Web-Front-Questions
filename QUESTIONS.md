@@ -217,6 +217,7 @@ HTML5?
 		果没有滚动条则是0）！左右都有一个滚动条宽度（或都是0）被占用，
 		主体内容就可以永远居中浏览器啦，从而没有任何跳动！
 		[demo](http://www.zhangxinxu.com/study/201501/body-scrollbar-no-jump.html "demo")
+		<a href = "http://www.zhangxinxu.com/wordpress/?p=4552">demo</a>
 		支持：IE9+以及其他现代浏览器。
 		[原作者](http://www.zhangxinxu.com/wordpress/?p=4552 "原作者")
 		
