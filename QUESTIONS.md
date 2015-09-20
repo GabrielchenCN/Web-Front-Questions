@@ -445,6 +445,21 @@ HTML5?
 -  jQuery 的属性拷贝(extend)的实现原理是什么，如何实现深拷贝？ 
 
 -  jquery.extend 与 jquery.fn.extend的区别？
+		从jQuery的源码中可以看到，jQuery.extend和jQuery.fn.extend其实是同指向同一方法的不同引用
+		
+		jQuery.extend = jQuery.fn.extend = function() {
+		jQuery.extend 对jQuery本身的属性和方法进行了扩展
+		
+		jQuery.fn.extend 对jQuery.fn的属性和方法进行了扩展
+		通过extend()函数可以方便快速的扩展功能，不会破坏jQuery的原型结构
+		
+		jQuery.extend = jQuery.fn.extend = function(){...}; 这个是连等，也就是2个指向同一个函数，怎么会实现不同的功能呢？这就是this 力量了！
+		
+		针对fn与jQuery其实是2个不同的对象，在之前有讲述：
+		
+		jQuery.extend 调用的时候，this是指向jQuery对象的(jQuery是函数，也是对象！)，所以这里扩展在jQuery上。
+		而jQuery.fn.extend 调用的时候，this指向fn对象，jQuery.fn 和jQuery.prototype指向同一对象，扩展fn就是扩展jQuery.prototype原型对象。
+		这里增加的是原型方法，也就是对象方法了。所以jQuery的api中提供了以上2中扩展函数。
 
 -  jQuery 的队列是如何实现的？队列可以用在哪些地方？
 
