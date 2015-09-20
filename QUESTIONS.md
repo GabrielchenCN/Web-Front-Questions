@@ -323,12 +323,13 @@ HTML5?
 -  同步和异步的区别?
 
 -  如何解决跨域问题?
+
 -  URIError: URI malformed 是什么原因？
-URL格式错误，一般是由于编码错误或编码格式不一致导致
-JavaScript有三个编码函数和三个解码函数，它们应该一一对应
-escape,encodeURI,encodeURIComponent，相应3个解码函数：unescape,decodeURI,decodeURIComponent
-1.encodeURI() 函数可把字符串作为 URI 进行编码。该方法不会对 ASCII 字母和数字进行编码，
-也不会对这些 ASCII 标点符号进行编码： - _ . ! ~ * ' ( ) 。
+		URL格式错误，一般是由于编码错误或编码格式不一致导致
+		JavaScript有三个编码函数和三个解码函数，它们应该一一对应
+		escape,encodeURI,encodeURIComponent，相应3个解码函数：unescape,decodeURI,decodeURIComponent
+		1.encodeURI() 函数可把字符串作为 URI 进行编码。该方法不会对 ASCII 字母和数字进行编码，
+		也不会对这些 ASCII 标点符号进行编码： - _ . ! ~ * ' ( ) 。
 
 2.escape:该方法不会对 ASCII 字母和数字进行编码，也不会对下面这些 ASCII 标点符号进行编码： * @ - _ + . / 。其他所有的字符都会被转义序列替换。
 
