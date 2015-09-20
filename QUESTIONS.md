@@ -62,8 +62,81 @@
 
 - 常见的浏览器内核有哪些？
 
+		 * IE浏览器的内核Trident、Mozilla的Gecko、Chrome的Blink（WebKit的分支）、Opera内核原为Presto，现为Blink;
+- 常见兼容性问题？
+		* png24位的图片在iE6浏览器上出现背景，解决方案是做成PNG8.
+		
+		* 浏览器默认的margin和padding不同。解决方案是加一个全局的*{margin:0;padding:0;}来统一。
+		
+		* IE6双边距bug:块属性标签float后，又有横行的margin情况下，在ie6显示margin比设置的大。
+		
+		  浮动ie产生的双倍距离 #box{ float:left; width:10px; margin:0 0 0 100px;}
+		
+		 这种情况之下IE会产生20px的距离，解决方案是在float的标签样式控制中加入——_display:inline;
+		将其转化为行内属性。(_这个符号只有ie6会识别)
+		
+		  渐进识别的方式，从总体中逐渐排除局部。
+		
+		  首先，巧妙的使用“\9”这一标记，将IE游览器从所有情况中分离出来。
+		  接着，再次使用“+”将IE8和IE7、IE6分离开来，这样IE8已经独立识别。
+		
+		  css
+		      .bb{
+		       background-color:#f1ee18;/*所有识别*/
+		      .background-color:#00deff\9; /*IE6、7、8识别*/
+		      +background-color:#a200ff;/*IE6、7识别*/
+		      _background-color:#1e0bd1;/*IE6识别*/
+		      }
+		
+		*  IE下,可以使用获取常规属性的方法来获取自定义属性,
+		   也可以使用getAttribute()获取自定义属性;
+		   Firefox下,只能使用getAttribute()获取自定义属性.
+		   解决方法:统一通过getAttribute()获取自定义属性.
+		
+		* IE下,even对象有x,y属性,但是没有pageX,pageY属性;
+		  Firefox下,event对象有pageX,pageY属性,但是没有x,y属性.
+		
+		* 解决方法：（条件注释）缺点是在IE浏览器下可能会增加额外的HTTP请求数。
+		
+		* Chrome 中文界面下默认会将小于 12px 的文本强制按照 12px 显示,
+		  可通过加入 CSS 属性 -webkit-text-size-adjust: none; 解决.
+		
+		超链接访问过后hover样式就不出现了 被点击访问过的超链接样式不在具有hover和active了解决方法是改变CSS属性的排列顺序:
+		L-V-H-A :  a:link {} a:visited {} a:hover {} a:active {}
+["兼容性问题"](http://www.68design.net/Web-Guide/HTMLCSS/37154-1.html)
+
 - html5有哪些新特性、移除了那些元素？如何处理HTML5新标签的浏览器兼容问题？如何区分 HTML 和
 HTML5?
+
+		* HTML5 现在已经不是 SGML 的子集，主要是关于图像，位置，存储，多任务等功能的增加。
+		
+		* 绘画 canvas
+		  用于媒介回放的 video 和 audio 元素
+		  本地离线存储 localStorage 长期存储数据，浏览器关闭后数据不丢失；
+		  sessionStorage 的数据在浏览器关闭后自动删除
+		
+		  语意化更好的内容元素，比如 article、footer、header、nav、section
+		  表单控件，calendar、date、time、email、url、search
+		  新的技术webworker, websockt, Geolocation
+		
+		* 移除的元素
+		
+		纯表现的元素：basefont，big，center，font, s，strike，tt，u；
+		
+		对可用性产生负面影响的元素：frame，frameset，noframes；
+		
+		支持HTML5新标签：
+		
+		* IE8/IE7/IE6支持通过document.createElement方法产生的标签，
+		  可以利用这一特性让这些浏览器支持HTML5新标签，
+		
+		  浏览器支持新标签后，还需要添加标签默认的样式：
+		
+		* 当然最好的方式是直接使用成熟的框架、使用最多的是html5shim框架
+		   <!--[if lt IE 9]>
+		   <script> src="http://html5shim.googlecode.com/svn/trunk/html5.js"</script>
+		   <![endif]-->
+		如何区分： DOCTYPE声明\新增的结构元素\功能元素
 
 - 举出5个HTML5的新标签并说明其意义
 
