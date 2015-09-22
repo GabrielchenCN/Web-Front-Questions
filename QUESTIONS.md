@@ -281,6 +281,10 @@ HTML5?
 
 - li与li之间有看不见的空白间隔是什么原因引起的？有什么解决办法？
 
+		同设置display：inline-block出现间歇问题，是由于空格（white-space）产生
+		可通过设置父元素（ul）font-size:0，再设置本身元素字体大小解决,
+		也可以利用移除空格，负margin,letter-spacing,word-spacing等解决。
+
 - 经常遇到的浏览器的兼容性有哪些？原因，解决方法是什么，常用hack的技巧 ？
 
 - 为什么要初始化CSS样式。
@@ -288,6 +292,9 @@ HTML5?
 - absolute的containing block计算方式跟正常流有什么不同？
 
 - CSS里的visibility属性有个collapse属性值是干嘛用的？在不同浏览器下以后什么区别？
+
+		一般不使用，推荐不使用，在chrome上对于table等元素作用和hidden一样，
+		但在火狐上作用和display：none一样（所占据位置也会消失）
 
 - position跟display、margin collapse、overflow、float这些特性相互叠加后会怎么样？
 
