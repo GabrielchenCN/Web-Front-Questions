@@ -722,6 +722,9 @@ HTML5?
 	 	 答案是通过探测鼠标移动的方向和轨迹，具体查看Khan Academy工程师 Ben Kamens 写的 jQuery插件
 ![这是 Khan Academy工程师 Ben Kamens 写的 jQuery插件](http://a.36krcnd.com/photo/3f716d75a80cdce23c803fc6f088846e.png)
 
+## 好用的工具，插件
+   1.[SublimeCodeIntel](https://github.com/SublimeCodeIntel/SublimeCodeIntel) 
+
 
 ## <a name='web'>前端学习网站推荐</a>
 	
