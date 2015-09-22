@@ -567,6 +567,19 @@ HTML5?
 		a.x=a=b.y=b=c.z=c={}  
 		console.log(a,b,c,d) 
 [详解见评论](http://www.iteye.com/topic/785445 "详解见评论")
+
+- 阅读javascript代码，回答问题(输出是什么，为什么？)
+	
+		var obj={1:'a',2:'b',length:2,push:[].push} ;
+		obj.push('c');
+		
+		console.log(obj[2]); //c
+		console.log(obj.length); //3
+		if var obj={1:'a',2:'b',length:3,push:[].push} ;
+		how about your answer?
+		console.log(obj[2]); //b
+		console.log(obj.length); //4
+                ps：我不是很明白为什么是这个结果
 		
 		
 - 购物车的实现原理？
