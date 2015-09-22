@@ -213,6 +213,11 @@ HTML5?
 
 - CSS3有哪些新特性（包含哪些模块）？
 
+		  CSS3实现圆角（border-radius:8px），阴影（box-shadow:10px），
+		  对文字加特效（text-shadow、），线性渐变（gradient），旋转（transform）
+		  transform:rotate(9deg) scale(0.85,0.90) translate(0px,-30px) skew(-9deg,0deg);//旋转,缩放,定位,倾斜
+		  增加了更多的CSS选择器  多背景 rgba 
+
 - 如何居中div？如何居中一个浮动元素？
 
 		绝对定位后利用负外边距（top left）和top left 50%， 		
@@ -248,6 +253,27 @@ HTML5?
 		ie盒子模型有： border content padding margin ,其中width,height是content+border+padding大小
 
 - display有哪些值？说明他们的作用。position的值relative和absolute定位原点是？
+
+		  1.   
+		  block 象块类型元素一样显示。
+		  none 缺省值。象行内元素类型一样显示。
+		  inline-block 象行内元素一样显示，但其内容象块类型元素一样显示。
+		  list-item 象块类型元素一样显示，并添加样式列表标记。
+		
+		  2. 
+		  *absolute 
+		        生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。 
+		
+		  *fixed （老IE不支持）
+		        生成绝对定位的元素，相对于浏览器窗口进行定位。 
+		
+		  *relative 
+		        生成相对定位的元素，相对于其正常位置进行定位。 
+		
+		  * static  默认值。没有定位，元素出现在正常的流中
+		  *（忽略 top, bottom, left, right z-index 声明）。
+		
+		  * inherit 规定从父元素继承 position 属性的值。
 
 - display:none;overflow：hidden;与visibility:hidden;的区别？
 
