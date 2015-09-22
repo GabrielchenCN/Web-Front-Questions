@@ -226,7 +226,9 @@ HTML5?
 - 使用 CSS 预处理器吗？喜欢那个，Why？
 
 - CSS优化、提高性能的方法有哪些？
+
 - CSS图片优化
+
 		  CSS Sprites   多张小图片组合成一张大图片，一次请求即可
 		  CSS icon font 图片icon像文字一样可配置
 		  base64        通过对图片编码，引用图片
