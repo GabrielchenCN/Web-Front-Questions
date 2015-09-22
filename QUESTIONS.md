@@ -174,8 +174,8 @@ HTML5?
 
 - 如何居中div？如何居中一个浮动元素？
 
-		决定定位后利用负外边距（top left）和top left 50%， 		
-	 .center{
+		绝对定位后利用负外边距（top left）和top left 50%， 		
+		.center{
 			width: 100px;
 			height: 200px;
 			/*margin: 0 auto;*/
