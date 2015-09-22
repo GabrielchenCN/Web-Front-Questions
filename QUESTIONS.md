@@ -174,6 +174,33 @@ HTML5?
 
 - 如何居中div？如何居中一个浮动元素？
 
+		决定定位后利用负外边距（top left）和top left 50%， 		
+	 .center{
+			width: 100px;
+			height: 200px;
+			/*margin: 0 auto;*/
+			top: 50%;
+			left: 50%;
+			margin-left: -50px;
+			margin-top: -100px;
+			position: absolute;
+			background-color: #ff0;
+		} 
+		浮动元素（水平）居中（关键点在利用相对定位）
+		父元素和子元素同时左浮动，然后父元素相对左移动50%，再然后子元素相对右移动50%，
+		或者子元素相对左移动-50%也就可以了。如此简单如此神奇。
+		.box{
+		    float:left;
+		    position:relative;
+		    left:50%;
+		}
+		p{
+		    float:left;
+		    position:relative;
+		    right:50%;
+		}
+[CSS奇淫巧计]('http://www.cnblogs.com/2050/p/3392803.html')
+
 - 介绍一下标准的CSS的盒子模型？与低版本IE的盒子模型有什么不同的？
 
 - display有哪些值？说明他们的作用。position的值relative和absolute定位原点是？
