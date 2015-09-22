@@ -140,11 +140,52 @@ HTML5?
 
 - 举出5个HTML5的新标签并说明其意义
 
+		<audio>标签定义音乐。 支持三种格式,ogg,mp3,wav。 
+		<canvas>使用JavaScript在网页上绘制图形图像。
+		<datalist> 定义选项列表.和input一起用，实现<select> <option> 类似效果不过还可以自己输入内容
+		ex.
+		<input id="myCar" list="cars" />
+		<datalist id="cars">
+		  <option value="BMW">
+		  <option value="Ford">
+		  <option value="Volvo">
+		</datalist>
+		<nav> 标记定义导航链接
+		<footer> 标记定义一个页面或一个区域的底部
+		<video> 标记定义一个视频
+		<progress>状态标签 (任务过程:安装、加载) ,进度条效果
+
 - 简述一下你对HTML语义化的理解？
+
+		1.内容结构化,失去CSS样式也能有良好的结构 2.用户体验好，如alt等提示标签 3.有利于SEO（搜索引擎优化） 
+		4.方便其他设备解析 5.便于团队开发和维护
 
 - (写)描述一段语义的html代码吧。
 
-- HTML5的离线储存怎么用，工作原理能不能解释一下？
+- HTML5的离线缓存（ApplicationCache）怎么用，工作原理能不能解释一下？
+
+		在你的页面头部像下面一样加入一个manifest的属性
+		<!DOCTYPE HTML>
+		<html manifest = "cache.manifest">
+		...
+		</html>
+		
+		然后把需要离线缓存在本地的文件列在一个manifest(cache.manifest)配置文件中
+		CACHE MANIFEST
+		#上面一句必须
+		#v1.0.0
+		#需要缓存的文件
+		CACHE:
+		a.js
+		b.css
+		#不需要缓存的文件
+		NETWORK:
+		*
+		#无法访问页面
+		FALLBACK:
+		404.html
+		
+		注意：与html5本地储存不同，本地缓存是指localStorage和sessionStorage
 
 - 浏览器是怎么对HTML5的离线储存资源进行管理和加载的呢？
 
@@ -203,6 +244,9 @@ HTML5?
 
 - 介绍一下标准的CSS的盒子模型？与低版本IE的盒子模型有什么不同的？
 
+		标准CSS盒子模型有：border content padding margin ,其中width，height是content大小
+		ie盒子模型有： border content padding margin ,其中width,height是content+border+padding大小
+
 - display有哪些值？说明他们的作用。position的值relative和absolute定位原点是？
 
 - display:none;overflow：hidden;与visibility:hidden;的区别？
@@ -226,7 +270,12 @@ HTML5?
 
 - 请解释一下CSS3的Flexbox（弹性盒布局模型）,以及适用场景？
 
+		box-flex 属性规定框的子元素是否可伸缩其尺寸。
+		能够很好实现居中，浮动，对齐，显示次序等功能，但其向下兼容不很好，只适用于现代浏览器
+
 - 用纯CSS创建一个三角形的原理是什么？
+
+		border的透明度+border的宽度，当border-top为透明，border-left有颜色时，在直角处形成一个45度角
 
 - 一个满屏 品 字布局 如何设计?
 
