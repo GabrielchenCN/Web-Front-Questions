@@ -428,6 +428,47 @@ HTML5?
 -  JavaScript有几种类型值？（堆：原始值和 栈：引用值），你能画一下他们的内存图吗？
 
 -  Javascript如何实现继承？
+
+		原型链和构造器
+		<script type="text/javascript">
+		//组合继承
+			var Person = function(name){
+				this.name = name;
+			}
+			Person.prototype.getName = function(){
+				return this.name
+			}
+		
+			var Student = function(name,age){
+				this.age=age;
+				Person.call(this,name);
+		
+				this.setAge=function(age){
+					this.age=age;
+				}
+			}
+		
+			Person.prototype.setName =function(name){
+			    this.name =name;
+			}
+		
+			/*Student.prototype.setAge =function(age){
+				this.age=age;
+			    不可以使用原型链寻找到age参数，因为student的原型person里没有age
+			}*/
+		
+			Student.prototype = new Person(name);
+			var p = new Person("chen");
+			var s =new Student("siming","19");
+			console.log(p);
+			console.log(s);
+			console.log(s.getName());
+			console.log(s.setAge("11"));
+			console.log(s.setName("sm"));
+			console.log(p);
+			console.log(s);
+		
+		</script>
   
 -  event.target与event.currentTarget 的含义和区别
   
