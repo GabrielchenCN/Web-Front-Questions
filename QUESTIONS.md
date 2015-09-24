@@ -742,7 +742,7 @@ HTML5?
 		};
 		 
 		add(1)(2)(3); //6
-		
+		//有问题
 		function add(x) {
 		    var sum = x;
 		    var tmp = function (y) {
