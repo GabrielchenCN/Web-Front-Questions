@@ -730,6 +730,32 @@ HTML5?
 		console.log(obj[2]); //b
 		console.log(obj.length); //4
                 ps：我不是很明白为什么是这个结果
+
+- JavaScript实现 add(1)(2)(3)
+		
+		var add = function(a){
+		    return function(b){
+		        return function(c){
+		            return a+b+c;
+		        };
+		    };
+		};
+		 
+		add(1)(2)(3); //6
+		
+		function add(x) {
+		    var sum = x;
+		    var tmp = function (y) {
+		        sum = sum + y;
+		        return tmp;
+		    };
+		    tmp.toString = function () {
+		        return sum;
+		    };
+		    return tmp;
+		}
+		console.log(add(1)(2)(3));  //6
+		console.log(add(1)(2)(3)(4));   //10
 		
 		
 - 购物车的实现原理？
