@@ -223,7 +223,7 @@ HTML5?
 		4. Resize浏览器窗口、滚动页面
 		5. 读取元素的某些属性（offsetLeft、offsetTop、offsetHeight、offsetWidth、 scrollTop/Left/Width/Height、clientTop/Left/Width/Height、 getComputedStyle()、currentStyle(in IE))
 
-[重构相关]('http://www.blueidea.com/tech/web/2011/8365.asp')
+[重构相关](http://www.blueidea.com/tech/web/2011/8365.asp)
 
 ## <a name='css'>CSS</a>
 
@@ -857,7 +857,7 @@ HTML5?
 		跨站脚本攻击(Cross Site Scripting)
 		主要就是通过上次文本或者访问url是注入js代码（或经过编码的js代码），达到转移访问地址，
 		获取session等信息，注入数据库等功能
-[例子]("http://www.cnblogs.com/bangerlee/archive/2013/04/06/3002142.html")
+[例子](http://www.cnblogs.com/bangerlee/archive/2013/04/06/3002142.html)
 
 - http 304状态码的原理
 		
