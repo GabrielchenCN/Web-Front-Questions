@@ -646,6 +646,29 @@ HTML5?
 -  jQuery 的队列是如何实现的？队列可以用在哪些地方？
 
 -  谈一下Jquery中的bind(),live(),delegate(),on()的区别？
+-  JQuery的deferred怎么用，解决了什么问题？
+
+		使用方法：1.ajax操作的链式写法
+		    $.ajax("test.html")
+		
+		　　.done(function(){ alert("哈哈，成功了！"); })
+		
+		　　.fail(function(){ alert("出错啦！"); });
+		　　2.指定同一操作的多个回调函数
+		　　$.ajax("test.html")
+		
+		　　.done(function(){ alert("哈哈，成功了！");} )
+		
+		　　.fail(function(){ alert("出错啦！"); } )
+		
+		　　.done(function(){ alert("第二个回调函数！");} );
+		　　3.为多个操作指定回调函数
+		　　　　$.when($.ajax("test1.html"), $.ajax("test2.html"))
+		
+		　　.done(function(){ alert("哈哈，成功了！"); })
+		
+		　　.fail(function(){ alert("出错啦！"); });
+[deferred详解](http://www.jb51.net/article/28054.htm)
 
 -  JQuery一个对象可以同时绑定多个事件，这是如何实现的？
 
