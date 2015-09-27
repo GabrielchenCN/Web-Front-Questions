@@ -202,6 +202,23 @@ HTML5?
 - 如何使用websocket？如何兼容低浏览器？(阿里)
 
 - 页面可见性（Page Visibility）API 可以有哪些用途？
+- 页面渲染的过程？
+
+		1.解析HTML代码并生成一个 DOM 树。
+		
+		2.解析CSS文件，顺序为：浏览器默认样式->自定义样式->页面内的样式。
+		
+		3.生成一个渲染树（render tree）。这个渲染树和DOM树的不同之处在于，它是受样式影响的。它不包括那些不可见的节点。
+		
+		4.当渲染树生成之后，浏览器就会在屏幕上“画”出所有渲染树中的节点。
+
+- 什么情况下会触发浏览器的repaint/reflow?
+
+		1. DOM元素的添加、修改（内容）、删除( Reflow + Repaint)
+		2. 仅修改DOM元素的字体颜色（只有Repaint，因为不需要调整布局）
+		3. 应用新的样式或者修改任何影响元素外观的属性
+		4. Resize浏览器窗口、滚动页面
+		5. 读取元素的某些属性（offsetLeft、offsetTop、offsetHeight、offsetWidth、 scrollTop/Left/Width/Height、clientTop/Left/Width/Height、 getComputedStyle()、currentStyle(in IE))
 
 ## <a name='css'>CSS</a>
 
