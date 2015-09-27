@@ -220,6 +220,8 @@ HTML5?
 		4. Resize浏览器窗口、滚动页面
 		5. 读取元素的某些属性（offsetLeft、offsetTop、offsetHeight、offsetWidth、 scrollTop/Left/Width/Height、clientTop/Left/Width/Height、 getComputedStyle()、currentStyle(in IE))
 
+[重构相关]('http://www.blueidea.com/tech/web/2011/8365.asp')
+
 ## <a name='css'>CSS</a>
 
 - CSS选择符有哪些？哪些属性可以继承？
