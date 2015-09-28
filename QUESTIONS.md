@@ -801,6 +801,35 @@ HTML5?
 		}
 		console.log(add(1)(2)(3));  //6
 		console.log(add(1)(2)(3)(4));   //10
+
+- 已知
+  var Person = function(name){
+		this.name = name;
+	}
+	Person.prototype.getName = function(){
+		return this.name
+	}
+   从Person中继承一个Student(name,age)类，并实现setAge 和setName方法
+
+		var Student = function(name,age){
+				this.age=age;
+				Person.call(this,name);
+		
+				this.setAge=function(age){
+					this.age=age;
+				}
+			}
+		
+			Person.prototype.setName =function(name){
+			    this.name =name;
+			}
+		
+			/*Student.prototype.setAge =function(age){
+				this.age=age;
+			    不可以使用原型链寻找到age参数，因为student的原型person里没有age
+			}*/
+		
+			Student.prototype = new Person(name);
 		
 		
 - 购物车的实现原理？
