@@ -523,12 +523,20 @@ HTML5?
 
 -  用过typeOf 和 instanceOf吗？ 说说他们的区别
 -  如何判断对象是不是Function?
+
 		function isFunction(obj) {  
 		
 		  return Object.prototype.toString.call(obj) === '[object Function]';   
 		
 		};
-		解释：ECMA规范定义了Object.prototype.toString的行为：首先，取得对象的一个内部属性[[Class]]，然后依据这个属性，返回一个类似于"[object Array]"的字符串作为结果（看过ECMA标准的应该都知道，[[]]用来表示语言内部用到的、外部不可直接访问的属性，称为“内部属性”）。利用这个方法，再配合call，我们可以取得任何对象的内部属性[[Class]]，然后把类型检测转化为字符串比较，以达到我们的目的；call改变toString的this引用为待检测的对象，返回此对象的字符串表示，然后对比此字符串是否是'[object Array]'，以判断其是否是Array的实例。也许你要问了，为什么不直接o.toString()？嗯，虽然Array继承自Object，也会有toString方法，但是这个方法有可能会被改写而达不到我们的要求，而Object.prototype则是老虎的屁股，很少有人敢去碰它的，所以能一定程度保证其“纯洁性”：）
+		解释：ECMA规范定义了Object.prototype.toString的行为：首先，取得对象的一个内部属性[[Class]]，
+		然后依据这个属性，返回一个类似于"[object Array]"的字符串作为结果（看过ECMA标准的应该都知道，
+		[[]]用来表示语言内部用到的、外部不可直接访问的属性，称为“内部属性”）。利用这个方法，再配合call
+		，我们可以取得任何对象的内部属性[[Class]]，然后把类型检测转化为字符串比较，以达到我们的目的
+		；call改变toString的this引用为待检测的对象，返回此对象的字符串表示，然后对比此字符串是否是
+		'[object Array]'，以判断其是否是Array的实例。也许你要问了，为什么不直接o.toString()？嗯，虽
+		然Array继承自Object，也会有toString方法，但是这个方法有可能会被改写而达不到我们的要求，
+		而Object.prototype则是老虎的屁股，很少有人敢去碰它的，所以能一定程度保证其“纯洁性”：）
 
 
 -  href="javascript:; onclick="javascript:return false;" 这样写的作用是什么？
