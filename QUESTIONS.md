@@ -62,7 +62,10 @@
 
 - 常见的浏览器内核有哪些？
 
-		 * IE浏览器的内核Trident、Mozilla的Gecko、Chrome的Blink（WebKit的分支）、Opera内核原为Presto，现为Blink;
+		 * IE浏览器的内核Trident、
+		 * Mozilla的Gecko、
+		 * Chrome的Blink（WebKit的分支）、
+		 * Opera内核原为Presto，现为Blink;
 - 常见兼容性问题？
 		* png24位的图片在iE6浏览器上出现背景，解决方案是做成PNG8.
 		
@@ -189,17 +192,63 @@ HTML5?
 
 - 浏览器是怎么对HTML5的离线储存资源进行管理和加载的呢？
 
+		在线的情况下，浏览器发现html头部有manifest属性，它会请求manifest文件，如果是第一次访问app，
+		那么浏览器就会根据manifest文件的内容下载相应的资源并且进行离线存储。如果已经访问过app并且
+		资源已经离线存储了，那么浏览器就会使用离线的资源加载页面，然后浏览器会对比新的manifest文件
+		与旧的manifest文件，如果文件没有发生改变，就不做任何操作，如果文件改变了，那么就会重新下载
+		文件中的资源并进行离线存储。
+		离线的情况下，浏览器就直接使用离线存储的资源。
+
 - 请描述一下 cookies，sessionStorage 和 localStorage 的区别？
+
+		cookie在浏览器和服务器间来回传递。 sessionStorage和localStorage不会
+		sessionStorage和localStorage的存储空间更大；
+		sessionStorage和localStorage有更多丰富易用的接口；
+		sessionStorage和localStorage各自独立的存储空间；
 
 - iframe有那些缺点？
 
+		*iframe会阻塞主页面的Onload事件；
+		
+		*iframe和主页面共享连接池，而浏览器对相同域的连接有限制，所以会影响页面的并行加载。
+		
+		使用iframe之前需要考虑这两个缺点。如果需要使用iframe，最好是通过javascript
+		动态给iframe添加src属性值，这样可以可以绕开以上两个问题。
+
 - Label的作用是什么？是怎么用的？（加 for）
 
-- HTML5的form如何关闭自动完成功能？给不想要提示的input是设置autocomplete=off即可
+		label标签来定义表单控制间的关系,当用户选择该标签时，浏览器会自动将焦点转到和标签相关的表单控件上。
+		
+		<label for="Name">Number:</label> <input type=“text“name="Name" id="Name"/> 
+		
+		<label>Date:<input type="text" name="B" /></label>
+
+- HTML5的form如何关闭自动完成功能？
+
+		给不想要提示的input是设置autocomplete=off即可
 
 - 如何实现浏览器内多个标签页之间的通信? (阿里)
 
+		调用localstorge、cookies等本地存储方式
+
 - 如何使用websocket？如何兼容低浏览器？(阿里)
+		在支持WebSocket的浏览器中，在创建socket之后。可以通过onopen，onmessage，onclose即onerror
+		四个事件实现对socket进行响应。
+		0.var ws = new WebSocket(“ws://localhost:8080”);
+		申请一个WebSocket对象，参数是需要连接的服务器端的地址，同http协议使用http://开头一样，
+		WebSocket协议的URL使用ws://开头，另外安全的WebSocket协议使用wss://开头。
+		1.ws.send(“hello”);
+		用于叫消息发送到服务端
+		2.ws.onopen = function() { console.log(“open”)};
+		当websocket创建成功时，即会触发onopen事件
+		3.ws.onmessage = function(evt) { console.log(evt.data) };
+		当客户端收到服务端发来的消息时，会触发onmessage事件，参数evt.data中包含server传输过来的数据
+		4.ws.onclose = function(evt) { console.log(“WebSocketClosed!”); };
+		当客户端收到服务端发送的关闭连接的请求时，触发onclose事件
+		5.ws.onerror = function(evt) { console.log(“WebSocketError!”); };
+		如果出现连接，处理，接收，发送数据失败的时候就会触发onerror事件
+
+		Adobe Flash Socket 、 ActiveX HTMLFile (IE) 、 基于 multipart 编码发送 XHR 、 基于长轮询的 XHR
 
 - 页面可见性（Page Visibility）API 可以有哪些用途？
 - 页面渲染的过程？
