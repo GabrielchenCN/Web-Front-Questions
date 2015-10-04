@@ -232,6 +232,7 @@ HTML5?
 		调用localstorge、cookies等本地存储方式
 
 - 如何使用websocket？如何兼容低浏览器？(阿里)
+
 		在支持WebSocket的浏览器中，在创建socket之后。可以通过onopen，onmessage，onclose即onerror
 		四个事件实现对socket进行响应。
 		0.var ws = new WebSocket(“ws://localhost:8080”);
