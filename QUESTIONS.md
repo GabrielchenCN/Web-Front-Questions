@@ -848,7 +848,19 @@ HTML5?
 		
 		
 - 购物车的实现原理？
-		
+- 加载异步脚本的艺术
+
+Facebook 插件js jdk写法
+<script>
+(function(d,s,id){
+	var js , fjs = d.getElementsByTagName(s)[0];//防止找不到head等标签，必然存在一个script标签
+	if(d.getElementById(id)) return; //防止脚本多次引用
+	js= d.createElement(s) ; js.id = id;
+	js.src = "//connect.facebook.net/en_US/all.ks#xfbml=1";
+	fjs.parentNode.insertBefore(js,fjs);
+
+})(document,'script','facebook-jssdk');
+</script>		
 
 ## <a name='other'>其他问题</a>
 
