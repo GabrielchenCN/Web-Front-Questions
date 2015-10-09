@@ -950,7 +950,7 @@ Facebook 插件js jdk写法
 
 - 各种排序算法的时间空间复杂度
 
-		![sort]('http://blog.chinaunix.net/attachment/201201/18/21457204_1326898064RUxx.jpg')
+		![sort](http://blog.chinaunix.net/attachment/201201/18/21457204_1326898064RUxx.jpg)
 
 - 原来公司工作流程是怎么样的，如何与其他人协作的？如何夸部门合作的？
 
