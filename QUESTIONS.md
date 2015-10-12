@@ -278,8 +278,25 @@ HTML5?
 ## <a name='css'>CSS</a>
 
 - CSS选择符有哪些？哪些属性可以继承？
+
+		*   1.id选择器（ # myid）
+		    2.类选择器（.myclassname）
+		    3.标签选择器（div, h1, p）
+		    4.相邻选择器（h1 + p）
+		    5.子选择器（ul > li）
+		    6.后代选择器（li a）
+		    7.通配符选择器（ * ）
+		    8.属性选择器（a[rel = "external"]）
+		    9.伪类选择器（a: hover, li: nth - child）
+		
+		*   可继承的样式： font-size font-family color, UL LI DL DD DT;
  
 - CSS优先级算法如何计算？ 
+
+		 !important >内联（1000）>  id（100） > class（10） > tag（1）
+		  优先级就近原则，同权重情况下样式定义最近者为准;
+		
+		   important 比 内联优先级高
 
 - CSS3新增伪类有那些？
 
@@ -376,6 +393,49 @@ HTML5?
 		border的透明度+border的宽度，当border-top为透明，border-left有颜色时，在直角处形成一个45度角
 
 - 一个满屏 品 字布局 如何设计?
+
+			<!doctype>
+			<html>
+			    <head>
+			        <title>test</title>
+			    </head>
+			    <style>
+			    *{
+			        margin:0;
+			        padding: 0;
+			    }
+			    .main{
+			        width:100%;
+			        height: 60%;
+			    }
+			    .main .left, .main .right{
+			        width:50%;
+			        height: 100%;
+			        float:left;
+			        background: #a23;
+			    }
+			    .main .right{
+			        background: #e11;
+			    }
+			    .clear{
+			        clear:both;
+			    }
+			    .header{
+			        height:40%;
+			        background: #e33;
+			        width:100%;
+			    }
+			    </style>
+			    <body>
+			        <div class="header"></div>
+			        <div class="main">
+			            <div class="left"></div>
+			            <div class="right"></div>
+			            <div class="clear"></div>
+			        </div>
+			        
+			    </body>
+			</html>
 
 - li与li之间有看不见的空白间隔是什么原因引起的？有什么解决办法？
 
