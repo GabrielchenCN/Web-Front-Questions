@@ -1030,6 +1030,8 @@ Facebook 插件js jdk写法
 ## <a name='other'>其他问题</a>
 - 知道nginx吗？ 干什么用的？
 
+		[知乎介绍](http://www.zhihu.com/question/21483073)
+
 - 输入url到显示页面发生了什么？
 
 		作一个简单粗暴的描述，假设是简单的HTTP请求，IPV4，没有代理。
