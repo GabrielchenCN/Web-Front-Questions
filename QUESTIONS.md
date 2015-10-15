@@ -543,6 +543,10 @@ HTML5?
 [demo](http://www.zhangxinxu.com/study/201501/body-scrollbar-no-jump.html "demo")
 支持：IE9+以及其他现代浏览器。
 [原作者](http://www.zhangxinxu.com/wordpress/?p=4552 "原作者")
+
+- 自适应布局怎么编写？
+
+		[自适应网页设计](http://www.ruanyifeng.com/blog/2012/05/responsive_web_design.html "自适应")
 		
 
 ## <a name='js'>JavaScript</a>
