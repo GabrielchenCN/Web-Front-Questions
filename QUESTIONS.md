@@ -514,6 +514,8 @@ HTML5?
 
 - display:inline-block 兼容IE的hack(美的)
 
+		div {display:inline-block;*display:inline; *zoom:1;...} 
+
 - overflow: scroll时不能平滑滚动的问题怎么处理？
 
 - overflow: auto时页面进度条出现后页面不跳动？
@@ -552,6 +554,10 @@ HTML5?
 ## <a name='js'>JavaScript</a>
 
 -  用原生JavaScript的实现过什么功能吗？
+
+-  用JavaScript实现私有成员。
+
+		function myfun1(){var a = "private"};var b = myfun1();b.a// undefined
 
 -  JavaScript 实现数组去重   
 
