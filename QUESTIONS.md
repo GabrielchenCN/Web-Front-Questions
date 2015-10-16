@@ -557,7 +557,19 @@ HTML5?
 
 -  用JavaScript实现私有成员。
 
-		function myfun1(){var a = "private"};var b = myfun1();b.a// undefined
+		function Person(n, a){
+		    // public
+		    this.name = n;
+		    // private
+		    var age = a;
+		    this.getName = function(){
+		        return this.name;
+		    }
+		    this.getAge = function(){
+		        return age;
+		    }
+		};var p =new Person("chen","21"); p.name ;p.age;
+		//私有属性 不能直接访问，只能用公用方法getAge访问，而公用属性可以直接p.name访问
 
 -  JavaScript 实现数组去重   
 
