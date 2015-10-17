@@ -277,6 +277,40 @@ HTML5?
 
 ## <a name='css'>CSS</a>
 
+- 响应式设计
+
+		1.<meta name="viewport" content="width=device-width, initial-scale=1" 		  />viewport是网页默认的宽度和高度，上面这行代码的意思是，网页宽度默认等于屏幕宽度（width=device-width），
+		原始缩放比例（initial-scale=1）为1.0，即网页初始大小占屏幕面积的100%。
+		2.不适用绝对宽度
+		3.相对大小的字体 rem em
+		4.浮动布局
+		5.选择加载CSS
+		6.CSS的@media规则
+		7.图片的自适应（fluid image）
+		8.宽高：1vh 等于1/100的视口高度。栗子：浏览器高度900px, 1 vh = 900px/100 = 9 px。同理，如果视口宽度未750， 
+		1vw = 750px/100 = 7.5 px。 或使用百分比宽度
+		9.vmin 和 vmax则关于视口高度和宽度两者的最小或者最大值。(即vmin =屏幕长宽小者，vmax=屏幕长宽大者)
+
+
+
+- CSS的常用单位 
+
+		px：pixel，像素，屏幕上显示的最小单位，用于网页设计，直观方便；
+		
+		pt：point，是一个标准的长度单位，1pt＝1/72英寸，用于印刷业，非常简单易用；
+		
+		em：即％，在CSS中，1em＝100％，是一个比率，相对于父元素字体大小，结合CSS继承关系使用，具有灵活性。
+		
+		rem：CSS3新标签，相对于HTML字体大小
+		
+		rgba：颜色
+		
+		vh and vw
+		 
+		
+		
+	
+
 - CSS选择符有哪些？哪些属性可以继承？
 
 		*   1.id选择器（ # myid）
