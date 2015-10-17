@@ -1056,6 +1056,12 @@ HTML5?
 			        _this.shout();
 			    }, 2000);
 			}//使用闭包正确解法。定义私有属性_this指向Obj
+			//setTimeout(this.shout, 2000);
+			//没有括号是返回函数的引用，当setTimeout定时执行函数时是以普通的函数来执行的，
+			//不是以Obj对象的方法来执行，函数中的this===window。
+			//setTimeout(this.shout(), 2000);
+			//有括号是立即执行this.shout()，和setTimeout没有关系了
+			//此时function(){...}没有()，不是立即调用
 		
 - 购物车的实现原理？
 - 加载异步脚本的艺术
