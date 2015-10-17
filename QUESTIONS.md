@@ -1029,6 +1029,33 @@ HTML5?
 		3.第三个this.foo输出undefined，因为这个IIFE(立即执行函数表达式)中的this指向window。
 		4.第四个self.foo输出bar，因为这个匿名函数所处的上下文中没有self，所以通过作用域链向上查找，从包含它的父函数中找到了指向myObject对象的self。
 		
+- 阅读javascript代码，回答问题(输出是什么，为什么？)
+
+		var Obj=function(msg){
+		               this.msg=msg;
+		               this.shout=function(){
+		                      alert(this.msg);
+		               }
+		                  this.waitAndShout=function(){                               
+		                                setTimeout(this.shout, 2000);
+		               }
+		        }
+		 
+		        var aa=new Obj("abc");
+		 
+		        aa.waitAndShout();
+		        输出undefined;
+		        1.setTimeout(this.shout, 2000); 改为this.shout(),立即执行shout，
+		        没有延迟执行，可以弹出abc，但不符合出题目的
+		        2.this.shout=function(){        改为  var that = this;this.shout=function(){
+		                      alert(this.msg);					 alert(that.msg);
+		               }							}//也没有延迟执行
+			3.this.waitAndShout=function(){
+			    var _this = this;
+			    setTimeout(function(){
+			        _this.shout();
+			    }, 2000);
+			}//使用闭包正确解法。定义私有属性_this指向Obj
 		
 - 购物车的实现原理？
 - 加载异步脚本的艺术
