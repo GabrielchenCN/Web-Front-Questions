@@ -407,6 +407,10 @@ HTML5?
 		padding-box，padding计算入width内
 		
 		border-box，border和padding计算入width之内（ie盒模型）
+		
+- CSS3 的calc()属性
+
+		[自适应模式实现，比box-sizing更好，存在兼容性问题]('http://www.w3cplus.com/css3/how-to-use-css3-calc-function.html')
 
 - display:none;overflow：hidden;与visibility:hidden;的区别？
 
