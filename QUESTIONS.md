@@ -368,7 +368,7 @@ HTML5?
 		    position:relative;
 		    right:50%;
 		}
-[CSS奇淫巧计]('http://www.cnblogs.com/2050/p/3392803.html')
+[CSS奇淫巧计](http://www.cnblogs.com/2050/p/3392803.html)
 
 - 介绍一下标准的CSS的盒子模型？与低版本IE的盒子模型有什么不同的？
 
@@ -410,7 +410,7 @@ HTML5?
 		
 - CSS3 的calc()属性
 
-		[自适应模式实现，比box-sizing更好，存在兼容性问题]('http://www.w3cplus.com/css3/how-to-use-css3-calc-function.html')
+	[自适应模式实现，比box-sizing更好，存在兼容性问题](http://www.w3cplus.com/css3/how-to-use-css3-calc-function.html)
 
 - display:none;overflow：hidden;与visibility:hidden;的区别？
 
