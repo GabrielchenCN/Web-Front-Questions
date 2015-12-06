@@ -398,6 +398,16 @@ HTML5?
 		
 		  * inherit 规定从父元素继承 position 属性的值。
 
+- CSS 的box-sizing属性
+
+		box-sizing属性可以为三个值之一：content-box（default），border-box，padding-box。
+		
+		content-box，border和padding不计算入width之内
+		
+		padding-box，padding计算入width内
+		
+		border-box，border和padding计算入width之内（ie盒模型）
+
 - display:none;overflow：hidden;与visibility:hidden;的区别？
 
 		CSS display:none;
