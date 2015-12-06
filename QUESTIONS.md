@@ -596,7 +596,7 @@ HTML5?
 
 - 自适应布局怎么编写？
 
-		[自适应网页设计](http://www.ruanyifeng.com/blog/2012/05/responsive_web_design.html "自适应")
+	[自适应网页设计](http://www.ruanyifeng.com/blog/2012/05/responsive_web_design.html "自适应")
 		
 
 ## <a name='js'>JavaScript</a>
@@ -701,7 +701,20 @@ HTML5?
 
 -  null，undefined的区别？
 
+[null，undefined的区别](http://www.ruanyifeng.com/blog/2014/03/undefined-vs-null.html)
+
 -  用过typeOf 和 instanceOf吗？ 说说他们的区别
+
+		 typeof用以获取一个变量或者表达式的类型，typeof一般只能返回如下几个结果：
+		
+		number,boolean,string,function（函数）,object（NULL,数组，对象）,undefined。
+		
+		正因为typeof遇到null,数组,对象时都会返回object类型，所以当我们要判断一个对象是否是数组时
+		
+		或者判断某个变量是否是某个对象的实例则要选择使用另一个关键语法instanceof
+		
+		instanceof用于判断一个变量是否某个对象的实例，如var a=new Array();alert(a instanceof Array);会返回true.
+
 -  如何判断对象是不是Function?
 
 		function isFunction(obj) {  
