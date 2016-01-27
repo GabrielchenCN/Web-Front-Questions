@@ -1256,6 +1256,8 @@ Facebook 插件js jdk写法
 
 - 你有自己的技术博客吗，常去那些博客？
 
+	[GabrielchenCN](http://www.cnblogs.com/gabrielchen/)
+
 - 对前端安全有什么看法？
 
 - 最近在学什么东西吗？
@@ -1315,6 +1317,16 @@ Facebook 插件js jdk写法
 		服务器通过以上两个头，也就是控制浏览器不要缓存数据
 		实体内容：代表服务器向客户端回送的数据
 
+## <a name='company'>对于公司的问题</a>
+
+- 公司目前产品所应用的技术，和公司未来可能的技术方向。
+- 公司的前端团队有多少人，新老员工比重如何，开发流程是怎么样的，如何进行项目进度控制。
+- 公司有什么样的培训制度。
+- 公司提供VPN或者其他科学上网工具吗？可以在非办公时间使用吗？
+- 公司的考核标准是什么样的。
+- 公司的作息时间，请假流程。
+- 
+
 ## 有趣的问题
 
 
@@ -1331,6 +1343,10 @@ Facebook 插件js jdk写法
 
 ## 好用的工具，插件
    1.[SublimeCodeIntel](https://github.com/SublimeCodeIntel/SublimeCodeIntel) 
+   2.Emmet
+   3.jsformat
+   4.jade
+   5.package control
 
 
 ## <a name='web'>前端学习网站推荐</a>
@@ -1356,6 +1372,8 @@ Facebook 插件js jdk写法
 	10.w3school：    http://www.w3school.com.cn/
 
 	11.mozilla：     https://developer.mozilla.org/zh-CN/docs/Web/
+	
+	12.codepen：   
 
 
 
@@ -1372,4 +1390,4 @@ Facebook 插件js jdk写法
 
 
 
-###更新时间:  2015/12/06
+###更新时间:  2016/01/27
