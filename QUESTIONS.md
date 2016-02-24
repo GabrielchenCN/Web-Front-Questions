@@ -732,11 +732,35 @@ HTML5?
 
 -  eval是做什么的？
 
+		它的功能是把对应的字符串解析成JS代码并运行；
+		应该避免使用eval，不安全，非常耗性能（2次，一次解析成js语句，一次执行）。
+
 -  什么是window对象? 什么是document对象?
+
+		BOM and DOM
 
 -  null，undefined的区别？
 
-[null，undefined的区别](http://www.ruanyifeng.com/blog/2014/03/undefined-vs-null.html)
+		null
+		
+		这是一个对象，但是为空。因为是对象，所以 typeof null 返回 'object' 。
+		
+		null 是 JavaScript 保留关键字。
+		
+		null 参与数值运算时其值会自动转换为 0 ，因此，下列表达式计算后会得到正确的数值：
+		
+		表达式：123 + null　　　　结果值：123
+		
+		表达式：123 * null　　　　结果值：0
+		
+		undefined
+		
+		undefined是全局对象（window）的一个特殊属性，其值是未定义的。但 typeof undefined 返回 'undefined' 。
+		
+		虽然undefined是有特殊含义的，但它确实是一个属性，而且是全局对象（window）的属性。
+
+		[null，undefined的区别](http://www.ruanyifeng.com/blog/2014/03/undefined-vs-null.html)
+		[null，undefined的区别 比较好](http://www.nowamagic.net/librarys/veda/detail/1201)
 
 -  用过typeOf 和 instanceOf吗？ 说说他们的区别
 
@@ -814,6 +838,13 @@ HTML5?
 
 
 -  "use strict";是什么意思 ? 使用它的有什么好处或坏处？
+
+		[USE STRICT ](http://www.ruanyifeng.com/blog/2013/01/javascript_strict_mode.html)
+		全局变量显式声明
+		静态绑定
+		增强的安全措施
+		重名错误
+		保留字 ES6
 
 -  如何判断一个对象是否属于某个类？
 
@@ -1035,6 +1066,8 @@ HTML5?
 		a.x=a=b.y=b=c.z=c={}  
 		console.log(a,b,c,d) 
 [详解见评论](http://www.iteye.com/topic/785445 "详解见评论")
+
+- javascript 深复制和浅复制
 
 - 阅读javascript代码，回答问题(输出是什么，为什么？)
 	
