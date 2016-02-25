@@ -656,6 +656,21 @@ HTML5?
 
 -  JavaScript 实现数组去重   
 
+		//IE8+ 兼容
+		function unique(arr) {
+		  var ret = []
+		 
+		  for (var i = 0; i < arr.length; i++) {
+		    var item = arr[i]
+		    if (ret.indexOf(item) === -1) {
+		      ret.push(item)
+		    }
+		  }
+		 
+		  return ret
+		}
+		[数组去重](http://blog.jobbole.com/33099/)
+
 -  介绍JavaScript的基本数据类型。
 
 -  说说写JavaScript的基本规范？
@@ -821,6 +836,28 @@ HTML5?
 
 
 -  关于事件，IE与火狐的事件机制有什么区别？ 如何阻止冒泡？
+
+		IE：
+		默认事件为冒泡事件attachEvent()
+	
+		window.event.cancelBubble = true;//停止冒泡
+		window.event.returnValue = false;//阻止事件的默认行为
+		
+		Firefox：
+		通过	addEventListener(event,fn,useCapture) 中useCapture设置冒泡或者是捕获事件//false为冒泡，比较兼容
+		event.preventDefault();// 取消事件的默认行为 
+		event.stopPropagation(); // 阻止事件的传播
+		
+		事件冒泡：事件按照从最特定的事件目标到最不特定的事件目标(document对象)的顺序触发，即子级元素先触发，父级元素后触发。
+		假设一个元素div，它有一个下级元素p。
+		<div>
+		　　<p>元素</p>
+		</div>
+		这两个元素都绑定了click事件，如果用户点击了p，它在div和p上都触发了click事件。p先触发，div后触发。这就叫做事件冒泡。
+		
+		事件捕获
+		当你使用事件捕获时，父级元素先触发，子级元素后触发，即div先触发，p后触发。
+	
 
 -  什么是闭包（closure），为什么要用它？
 
