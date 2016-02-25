@@ -1069,6 +1069,11 @@ HTML5?
 
 - javascript 深复制和浅复制
 
+		js中的赋值都为引用传递.就是说,在把一个对像赋值给一个变量时,那么这个变量所指向的仍就是原来对像的地址.引用就是浅拷贝。
+		深拷贝就是不紧复制对象的基本类,同时也复制原对象中的对象.就是说完全是新对象产生的，新对象所指向的不是原来对像的地址。
+		jquery中用 $.extend(true, {}, ...)
+		[深复制实现](http://jerryzou.com/posts/dive-into-deep-clone-in-javascript/)
+
 - 阅读javascript代码，回答问题(输出是什么，为什么？)
 	
 		var obj={1:'a',2:'b',length:2,push:[].push} ;
