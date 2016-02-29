@@ -107,6 +107,12 @@
 		
 		超链接访问过后hover样式就不出现了 被点击访问过的超链接样式不在具有hover和active了解决方法是改变CSS属性的排列顺序:
 		L-V-H-A :  a:link {} a:visited {} a:hover {} a:active {}
+
+		window.location.hash在firefox下中文自动转码为UTF-8问题
+		focus()在firefox下失效的问题：由于firefox需要先blur再focus，解决方法
+		setTimeout(function () {$(".app-input:eq("+id+")").focus(); }, 10);
+		
+		
 ["兼容性问题"](http://www.68design.net/Web-Guide/HTMLCSS/37154-1.html)
 
 - html5有哪些新特性、移除了那些元素？如何处理HTML5新标签的浏览器兼容问题？如何区分 HTML 和
@@ -676,6 +682,11 @@ HTML5?
 -  说说写JavaScript的基本规范？
 
 -  请解释一下JavaScript原型(prototype)? 每个JS对象都有原型属性吗？
+
+		在JavaScript 中，每当定义一个对象（函数）时候，对象中都会包含一些预定义的属性。其中函数对象的一个属性就是原型对象 prototype。注：普通对象没有prototype,但有__proto__属性。
+		JS在创建对象（不论是普通对象还是函数对象）的时候，都有一个叫做__proto__的内置属性，用于指向创建它的函数对象的原型对象prototype。以上面的例子为例：
+		[原型链理解1](http://www.108js.com/article/article1/10201.html?id=1092)
+		[原型链理解2](http://rockyuse.iteye.com/blog/1426510)
 
 -  JavaScript有几种类型值？（堆：原始值和 栈：引用值），你能画一下他们的内存图吗？
 
@@ -1435,7 +1446,7 @@ Facebook 插件js jdk写法
 - 公司提供VPN或者其他科学上网工具吗？可以在非办公时间使用吗？
 - 公司的考核标准是什么样的。
 - 公司的作息时间，请假流程。
-- 
+- 劳动合同签署时间长度
 
 ## 有趣的问题
 
