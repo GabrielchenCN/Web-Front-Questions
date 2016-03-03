@@ -1072,6 +1072,12 @@ HTML5?
 
 - 如何测试前端代码么? 知道BDD, TDD, Unit Test么? 知道怎么测试你的前端工程么(mocha, sinon, jasmin, qUnit..)?
 
+		GUI测试
+		js测试 
+		[qUnit官网](http://qunitjs.com/) jquery团队开发 	
+		[qUnit讲解DEMO](http://www.zhangxinxu.com/wordpress/2013/04/qunit-javascript-unit-test-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/)
+		[前端测试](https://www.zhihu.com/question/29922082)
+
 - 前端templating(Mustache, underscore, handlebars)是干嘛的, 怎么用?
 
 - 简述一下 Handlebars 的基本用法？
@@ -1282,6 +1288,18 @@ Facebook 插件js jdk写法
 </script>		
 
 ## <a name='other'>其他问题</a>
+
+- gulp和grunt的比较
+
+		易用 Gulp相比Grunt更简洁，而且遵循代码优于配置策略，维护Gulp更像是写代码。
+		
+		高效 Gulp相比Grunt更有设计感，核心设计基于Unix流的概念，通过管道连接，不需要写中间文件。
+		
+		高质量 Gulp的每个插件只完成一个功能，这也是Unix的设计原则之一，各个功能通过流进行整合并完成复杂的任务。例如：Grunt的imagemin插件不仅压缩图片，同时还包括缓存功能。他表示，在Gulp中，缓存是另一个插件，可以被别的插件使用，这样就促进了插件的可重用性。目前官方列出的有673个插件。
+		
+		易学 Gulp的核心API只有5个，掌握了5个API就学会了Gulp，之后便可以通过管道流组合自己想要的任务。
+		[原文](https://segmentfault.com/a/1190000002491282)
+
 - 知道nginx吗？ 干什么用的？
 
 	[知乎介绍](http://www.zhihu.com/question/21483073)
@@ -1388,6 +1406,7 @@ Facebook 插件js jdk写法
 	[GabrielchenCN](http://www.cnblogs.com/gabrielchen/)
 
 - 对前端安全有什么看法？
+
 
 - 最近在学什么东西吗？
 
