@@ -644,6 +644,35 @@ HTML5?
 
 -  用原生JavaScript的实现过什么功能吗？
 
+		javascript原生操作dom方法
+		    var createNode = document.createElement("div");
+		    var createTextNode = document.createTextNode("hello world");
+		    createNode.appendChild(createTextNode);
+		    document.body.appendChild(createNode);
+		    document.documentElement.appendChild(createNode);
+		    //插入
+		    document.body.insertBefore(createNode,div1);
+		   //替换元素
+		   var replaceChild = document.body.replaceChild(createNode,div1);
+		   /删除元素
+		    var removeChild = document.body.removeChild(div1);
+		    //克隆元素
+		    someNode.cloneNode(true):深度克隆，会复制节点及整个子节点
+		    someNode.cloneNode(false):浅克隆，会复制节点，但不复制子节点 
+	[JavaScript操作dom](http://www.2cto.com/kf/201410/347047.html)
+	
+		div拖拽
+		对元素绑定mousedown，mousemove，mouseup事件
+		在mousedown时计算
+		x = e.clientX - el.offsetWidth,//鼠标指针向对于浏览器页面（或客户区）的水平坐标 - 元素的宽
+		y = e.clientY - el.offsetHeight;//既当前高度差
+		在mousemove的时候设定高度，
+		 els.width = els.width;
+		els.height = e.clientY - y + 'px'; //当前高度
+		up的时候解绑
+		
+	[JavaScript算法实现](http://www.108js.com/index5.html)
+
 -  用JavaScript实现私有成员。
 
 		function Person(n, a){
@@ -675,7 +704,7 @@ HTML5?
 		 
 		  return ret
 		}
-		[数组去重](http://blog.jobbole.com/33099/)
+	[数组去重](http://blog.jobbole.com/33099/)
 
 -  介绍JavaScript的基本数据类型。
 
@@ -685,8 +714,8 @@ HTML5?
 
 		在JavaScript 中，每当定义一个对象（函数）时候，对象中都会包含一些预定义的属性。其中函数对象的一个属性就是原型对象 prototype。注：普通对象没有prototype,但有__proto__属性。
 		JS在创建对象（不论是普通对象还是函数对象）的时候，都有一个叫做__proto__的内置属性，用于指向创建它的函数对象的原型对象prototype。以上面的例子为例：
-		[原型链理解1](http://www.108js.com/article/article1/10201.html?id=1092)
-		[原型链理解2](http://rockyuse.iteye.com/blog/1426510)
+	[原型链理解1](http://www.108js.com/article/article1/10201.html?id=1092)
+	[原型链理解2](http://rockyuse.iteye.com/blog/1426510)
 
 -  JavaScript有几种类型值？（堆：原始值和 栈：引用值），你能画一下他们的内存图吗？
 
@@ -732,6 +761,7 @@ HTML5?
 			console.log(s);
 		
 		</script>
+	[多种方式实现继承](http://www.cnblogs.com/xieex/archive/2008/01/25/1053342.html)
   
 -  event.target与event.currentTarget 的含义和区别
   
@@ -785,8 +815,8 @@ HTML5?
 		
 		虽然undefined是有特殊含义的，但它确实是一个属性，而且是全局对象（window）的属性。
 
-		[null，undefined的区别](http://www.ruanyifeng.com/blog/2014/03/undefined-vs-null.html)
-		[null，undefined的区别 比较好](http://www.nowamagic.net/librarys/veda/detail/1201)
+	[null，undefined的区别](http://www.ruanyifeng.com/blog/2014/03/undefined-vs-null.html)
+	[null，undefined的区别 比较好](http://www.nowamagic.net/librarys/veda/detail/1201)
 
 -  用过typeOf 和 instanceOf吗？ 说说他们的区别
 
@@ -887,12 +917,13 @@ HTML5?
 
 -  "use strict";是什么意思 ? 使用它的有什么好处或坏处？
 
-		[USE STRICT ](http://www.ruanyifeng.com/blog/2013/01/javascript_strict_mode.html)
-		全局变量显式声明
-		静态绑定
-		增强的安全措施
-		重名错误
-		保留字 ES6
+	
+		1.全局变量显式声明
+		2.静态绑定
+		3.增强的安全措施
+		4.重名错误
+		5.保留字 ES6
+	[USE STRICT ](http://www.ruanyifeng.com/blog/2013/01/javascript_strict_mode.html)
 
 -  如何判断一个对象是否属于某个类？
 
@@ -1074,9 +1105,9 @@ HTML5?
 
 		GUI测试
 		js测试 
-		[qUnit官网](http://qunitjs.com/) jquery团队开发 	
-		[qUnit讲解DEMO](http://www.zhangxinxu.com/wordpress/2013/04/qunit-javascript-unit-test-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/)
-		[前端测试](https://www.zhihu.com/question/29922082)
+	[qUnit官网](http://qunitjs.com/) jquery团队开发 	
+	[qUnit讲解DEMO](http://www.zhangxinxu.com/wordpress/2013/04/qunit-javascript-unit-test-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/)
+	[前端测试](https://www.zhihu.com/question/29922082)
 
 - 前端templating(Mustache, underscore, handlebars)是干嘛的, 怎么用?
 
@@ -1109,8 +1140,8 @@ HTML5?
 		var a = {n: 1}                 
 		var b = a;
 		a.x = a = {n: 2}
-		console.log(a.x);
-		console.log(b.x);
+		console.log(a.x);//undefined
+		console.log(b.x);/{n:2}
 		
 		
 		//自己都说不通了。。
@@ -1118,9 +1149,9 @@ HTML5?
 		第三行 表达式解析为  a.x = (a = {n: 2})
 		执行顺序是左到右，所以有
 		a.x=Expression 时，a={n:1} ---->{n:1}.x=Expression，此处是{n:1}内存块被赋值了x
-		执行a = {n: 2}时，a被指向到 {n: 2}，此时b=a，也被指向{n:2};
+		执行a = {n: 2}时，aa被〈重新定义〉指向到 {n: 2}，此时b=a，也被指向{n:2};
 		console.log(a.x);时 a={n: 2} 不是{n:1} 所以没有.x属性 ,a.x 未定义
-		console.log(b.x);时 a={n: 2}
+		console.log(b.x);时 a={n: 2} b是a的引用，没有被重新定义，b.x指向{n：2};
 
 		解释
 		var a,b,c,d;  
@@ -1298,7 +1329,7 @@ Facebook 插件js jdk写法
 		高质量 Gulp的每个插件只完成一个功能，这也是Unix的设计原则之一，各个功能通过流进行整合并完成复杂的任务。例如：Grunt的imagemin插件不仅压缩图片，同时还包括缓存功能。他表示，在Gulp中，缓存是另一个插件，可以被别的插件使用，这样就促进了插件的可重用性。目前官方列出的有673个插件。
 		
 		易学 Gulp的核心API只有5个，掌握了5个API就学会了Gulp，之后便可以通过管道流组合自己想要的任务。
-		[原文](https://segmentfault.com/a/1190000002491282)
+	[原文](https://segmentfault.com/a/1190000002491282)
 
 - 知道nginx吗？ 干什么用的？
 
