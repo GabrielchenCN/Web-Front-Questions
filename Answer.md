@@ -1135,6 +1135,18 @@ HTML5?
 		Function.prototype.b = function(){};
 		var f = new F();
 
+		f.a === Object.prototype.a   //=> true
+		f.b === Function.prototype.b  //=> false
+		f 的原型链：
+		
+		f -----> F.prototype -----> Object.prototype -----> null
+		F 的原型链：
+		
+		F -----> Function.prototype -----> Object.prototype -----> null
+		所以
+		f(F的实例对象)能访问a
+		F(函数对象)能访问a,b
+
 - 阅读javascript代码，回答问题(输出是什么，为什么？)
 
 		var a = {n: 1}                 
