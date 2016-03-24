@@ -708,6 +708,62 @@ HTML5?
 
 -  介绍JavaScript的基本数据类型。
 
+		基本类型（sbnun）
+		1.string
+		2.boolean
+		3.null
+		4.undefined
+		5.number
+		
+		引用数据类型(typeof只返回这两种)
+		Object
+		Function
+		等
+	[JavaScript数据类型](http://www.cnblogs.com/top5/archive/2012/03/20/2408330.html)
+
+- 介绍JavaScript的执行上下文
+
+		我们总结一下，在“准备工作”中完成了哪些工作：
+		
+		变量、函数表达式——变量声明，默认赋值为undefined；
+		this——赋值；
+		函数声明——赋值；
+		这三种数据的准备情况我们称之为“执行上下文”或者“执行上下文环境”。
+
+	[JavaScript执行上下文](http://www.cnblogs.com/wangfupeng1988/p/3986420.html)
+
+-介绍JavaScript的this
+
+		在函数中this到底取何值，是在函数真正被调用执行的时候确定的，函数定义的时候确定不了。因为this的取值是执行上下文环境的一部分，每次调用函数，都会产生一个新的执行上下文环境。
+
+	[JavaScript的this](http://www.cnblogs.com/wangfupeng1988/p/3988422.html)
+	[JavaScript的this](http://www.cnblogs.com/wangfupeng1988/p/3996037.html)
+
+-介绍JavaScript的自由变量和作用域
+
+		自由变量：在A作用域中使用的变量x，却没有在A作用域中声明（即在其他作用域中声明的），对于A作用域来说，x就是一个自由变量
+				var x = 10 ;
+				function fn(){
+					 var a= 20;
+					 console.log(x+a);
+				}
+		
+		作用域：
+		有人说过要到父作用域中取，其实有时候这种解释会产生歧义.
+		相比而言，用这句话描述会更加贴切——要到创建这个函数的那个作用域中取值——是“创建”，
+		而不是“调用”，切记切记——其实这就是所谓的“静态作用域”。
+				var x = 10 ;
+				function fn(){
+				 console.log(x);
+				}
+				function show(x){
+				 var x = 20;
+				 (function(){
+				 	fn();
+				 })();
+				}
+				show(fn)
+
 -  说说写JavaScript的基本规范？
 
 -  请解释一下JavaScript原型(prototype)? 每个JS对象都有原型属性吗？
@@ -829,6 +885,11 @@ HTML5?
 		或者判断某个变量是否是某个对象的实例则要选择使用另一个关键语法instanceof
 		
 		instanceof用于判断一个变量是否某个对象的实例，如var a=new Array();alert(a instanceof Array);会返回true.
+		
+		instanceof判断规则：
+		Instanceof运算符的第一个变量是一个对象，暂时称为A；第二个变量一般是一个函数，暂时称为B。
+
+		Instanceof的判断队则是：沿着A的__proto__这条线来找，同时沿着B的prototype这条线来找，如果两条线能找到同一个引用，即同一个对象，那么就返回true。如果找到终点还未重合，则返回false。
 
 -  如何判断对象是不是Function?
 
