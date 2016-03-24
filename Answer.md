@@ -316,7 +316,14 @@ HTML5?
 		 
 		
 		
-	
+
+- CSS 的 Media Type 和 Media Queries 	
+
+		媒体类型(css2:Media Type):all screen tv
+		媒体特性(css3:Media Query):width height device-width /(min/max)
+		<link rel="stylesheet" media="screen and (min-width:900px)" href="big.css" type="text/css" />
+		<link rel="stylesheet" media="screen and (min-width:600px) and (max-width:900px)" href="style.css" type="text/css" />
+	[Media](http://www.jb51.net/css/163299.html)
 
 - CSS选择符有哪些？哪些属性可以继承？
 
