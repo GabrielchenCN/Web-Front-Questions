@@ -825,7 +825,17 @@ HTML5?
 		
 		</script>
 	[多种方式实现继承](http://www.cnblogs.com/xieex/archive/2008/01/25/1053342.html)
-  
+ 
+ 
+-  JavaScript函数式编程
+
+		1. 函数是"第一等公民"
+		2. 只用"表达式"，不用"语句"
+		3. 没有"副作用"
+		4. 不修改状态
+		5. 引用透明
+	[函数式编程](http://www.ruanyifeng.com/blog/2012/04/functional_programming.html)
+
 -  event.target与event.currentTarget 的含义和区别
   
 		target	返回触发此事件的元素（事件的目标节点）。
@@ -885,7 +895,7 @@ HTML5?
 
 		 typeof用以获取一个变量或者表达式的类型，typeof一般只能返回如下几个结果：
 		
-		number,boolean,string,function（函数）,object（NULL,数组，对象）,undefined。
+		number,boolean,string,undefined,function（函数）,object（NULL,数组，对象）。
 		
 		正因为typeof遇到null,数组,对象时都会返回object类型，所以当我们要判断一个对象是否是数组时
 		
@@ -935,6 +945,84 @@ HTML5?
 		
 
 -  写一个通用的事件侦听器函数(机试题)。
+
+		       // event(事件)工具集，来源：github.com/markyun
+		       markyun.Event = {
+		           // 页面加载完成后
+		           readyEvent : function(fn) {
+		               if (fn==null) {
+		                   fn=document;
+		               }
+		               var oldonload = window.onload;
+		               if (typeof window.onload != 'function') {
+		                   window.onload = fn;
+		               } else {
+		                   window.onload = function() {
+		                       oldonload();
+		                       fn();
+		                   };
+		               }
+		           },
+		           // 视能力分别使用dom0||dom2||IE方式 来绑定事件
+		           // 参数： 操作的元素,事件名称 ,事件处理程序
+		           addEvent : function(element, type, handler) {
+		               if (element.addEventListener) {
+		                   //事件类型、需要执行的函数、是否捕捉
+		                   element.addEventListener(type, handler, false);
+		               } else if (element.attachEvent) {
+		                   element.attachEvent('on' + type, function() {
+		                       handler.call(element);
+		                   });
+		               } else {
+		                   element['on' + type] = handler;
+		               }
+		           },
+		           // 移除事件
+		           removeEvent : function(element, type, handler) {
+		               if (element.removeEventListener) {
+		                   element.removeEventListener(type, handler, false);
+		               } else if (element.datachEvent) {
+		                   element.detachEvent('on' + type, handler);
+		               } else {
+		                   element['on' + type] = null;
+		               }
+		           },
+		           // 阻止事件 (主要是事件冒泡，因为IE不支持事件捕获)
+		           stopPropagation : function(ev) {
+		               if (ev.stopPropagation) {
+		                   ev.stopPropagation();
+		               } else {
+		                   ev.cancelBubble = true;
+		               }
+		           },
+		           // 取消事件的默认行为
+		           preventDefault : function(event) {
+		               if (event.preventDefault) {
+		                   event.preventDefault();
+		               } else {
+		                   event.returnValue = false;
+		               }
+		           },
+		           // 获取事件目标
+		           getTarget : function(event) {
+		               return event.target || event.srcElement;
+		           },
+		           // 获取event对象的引用，取到事件的所有信息，确保随时能使用event；
+		           getEvent : function(e) {
+		               var ev = e || window.event;
+		               if (!ev) {
+		                   var c = this.getEvent.caller;
+		                   while (c) {
+		                       ev = c.arguments[0];
+		                       if (ev && Event == ev.constructor) {
+		                           break;
+		                       }
+		                       c = c.caller;
+		                   }
+		               }
+		               return ev;
+		           }
+		       }
 
 -  ["1", "2", "3"].map(parseInt) 答案是多少？
 
@@ -995,6 +1083,8 @@ HTML5?
 
 -  如何判断一个对象是否属于某个类？
 
+		A instanceof B
+
 -  new操作符具体干了什么呢?
 
 		1、创建一个新对象；[var o = new Object();]
@@ -1007,6 +1097,8 @@ HTML5?
 
 -  Javascript中，有一个函数，执行时对象查找时，永远不会去查找原型，这个函数是？
 
+		hasOwnProperty 只会查找对象本身的属性（用for in 遍历属性的时候经常使用）
+
 -  对JSON的了解？
 
 -  `[].forEach.call($$("*"),function(a){
@@ -1017,9 +1109,23 @@ HTML5?
 
 -  ajax是什么，解释一下它的工作原理?
 
+	async javascript and xml
+
 -  同步和异步的区别?
 
 -  如何解决跨域问题?
+
+			    1.jsonp 需要目标服务器配合一个callback函数。
+			
+			　　2.window.name+iframe 需要目标服务器响应window.name。
+			
+			　　3.window.location.hash+iframe 同样需要目标服务器作处理。
+			
+			　　4.html5的 postMessage+ifrme 这个也是需要目标服务器或者说是目标页面写一个postMessage，主要侧重于前端通讯。
+			
+			　　5.CORS  需要服务器设置header ：Access-Control-Allow-Origin。
+			
+			　　6.nginx反向代理 这个方法一般很少有人提及，但是他可以不用目标服务器配合，不过需要你搭建一个中转nginx服务器，用于转发请求。
 
 -  URIError: URI malformed 是什么原因？
 		URL格式错误，一般是由于编码错误或编码格式不一致导致
@@ -1027,13 +1133,30 @@ HTML5?
 		escape,encodeURI,encodeURIComponent，相应3个解码函数：unescape,decodeURI,decodeURIComponent
 		1.encodeURI() 函数可把字符串作为 URI 进行编码。该方法不会对 ASCII 字母和数字进行编码，
 		也不会对这些 ASCII 标点符号进行编码： - _ . ! ~ * ' ( ) 。
-
-2.escape:该方法不会对 ASCII 字母和数字进行编码，也不会对下面这些 ASCII 标点符号进行编码： * @ - _ + . / 。其他所有的字符都会被转义序列替换。
-
-3.如果 URI 组件中含有分隔符，比如 ? 和 #，则应当使用 encodeURIComponent() 方法分别对各组件进行编码。
+		
+		2.escape:该方法不会对 ASCII 字母和数字进行编码，也不会对下面这些 ASCII 标点符号进行编码： * @ - _ + . / 。其他所有的字符都会被转义序列替换。
+		
+		3.如果 URI 组件中含有分隔符，比如 ? 和 #，则应当使用 encodeURIComponent() 方法分别对各组件进行编码。
 
 
 -  JS模块化开发怎么做？
+
+		[ 立即执行函数](http://www.ruanyifeng.com/blog/2012/10/javascript_module.html),不暴露私有成员
+		
+		        var module1 = (function(){
+		        　　　　var _count = 0;
+		        　　　　var m1 = function(){
+		        　　　　　　//...
+		        　　　　};
+		        　　　　var m2 = function(){
+		        　　　　　　//...
+		        　　　　};
+		        　　　　return {
+		        　　　　　　m1 : m1,
+		        　　　　　　m2 : m2
+		        　　　　};
+		        　　})();
+		 使用立即执行函数避免变量污染
 
 -  requireJS的核心原理是什么？（如何动态加载的？如何避免多次加载的？如何
 缓存的？）
@@ -1053,6 +1176,9 @@ HTML5?
 -  异步加载的方式有哪些？
 
 -  .call() 和 .apply() 的区别？
+
+		 call 的第二个参数可以是任意类型，而apply的第二个参数必须是数组
+
 
 -  JavaScript中的作用域与变量声明提升？
 
