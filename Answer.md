@@ -1135,6 +1135,8 @@ HTML5?
 
 -  JavaScript中的arguments 和arguments.callee
 
+		arguments 是一个类数组对象。代表传给一个function的参数列表。arguments 对象是函数内部的本地变量；arguments 已经不再是函数的属性了。
+		
 		arguments对象中有一个非常有用的属性：callee。arguments.callee返回此arguments对象所在的当前函数引用。在使用函数递归调用时推荐使用arguments.callee代替函数名本身。
 		
 		由JavaScript中函数的声明和调用特性，可以看出JavaScript中函数是不能重载的。
