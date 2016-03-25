@@ -1058,13 +1058,6 @@ HTML5?
 		           }
 		       }
 
--  ["1", "2", "3"].map(parseInt) 答案是多少？
-
-		[1,NaN,NaN]
-		因为 parseInt 需要两个参数 (val, radix)，其中 radix 表示解析时用的基数。map 传了 3 个 (element, index, array)，对应的 radix 不合法导致解析失败
-		
-	[解析](http://blog.csdn.net/freshlover/article/details/19034079 "解析")
-
 
 -  关于事件，IE与火狐的事件机制有什么区别？ 如何阻止冒泡？
 
@@ -1088,7 +1081,7 @@ HTML5?
 		
 		事件捕获
 		当你使用事件捕获时，父级元素先触发，子级元素后触发，即div先触发，p后触发。
-	
+
 
 -  什么是闭包（closure），为什么要用它？
 
@@ -1114,7 +1107,14 @@ HTML5?
 		4.重名错误
 		5.保留字 ES6
 	[USE STRICT ](http://www.ruanyifeng.com/blog/2013/01/javascript_strict_mode.html)
+	
+-  ["1", "2", "3"].map(parseInt) 答案是多少？
 
+		[1,NaN,NaN]
+		因为 parseInt 需要两个参数 (val, radix)，其中 radix 表示解析时用的基数。map 传了 3 个 (element, index, array)，对应的 radix 不合法导致解析失败
+		
+	[解析](http://blog.csdn.net/freshlover/article/details/19034079 "解析")
+	
 -  如何判断一个对象是否属于某个类？
 
 		A instanceof B
@@ -1132,6 +1132,22 @@ HTML5?
 -  Javascript中，有一个函数，执行时对象查找时，永远不会去查找原型，这个函数是？
 
 		hasOwnProperty 只会查找对象本身的属性（用for in 遍历属性的时候经常使用）
+
+-  JavaScript中的arguments 和arguments.callee
+
+		arguments对象中有一个非常有用的属性：callee。arguments.callee返回此arguments对象所在的当前函数引用。在使用函数递归调用时推荐使用arguments.callee代替函数名本身。
+		
+		由JavaScript中函数的声明和调用特性，可以看出JavaScript中函数是不能重载的。
+		
+		根据其他语言中重载的依据："函数返回值不同或形参个数不同"，我们可以得出上述结论：
+		
+		第一：Javascript函数的声明是没有返回值类型这一说法的；
+		
+		第二：JavaScript中形参的个数严格意义上来讲只是为了方便在函数中的变量操作，实际上实参已经存储在arguments对象中了。
+		
+		另外，从JavaScript函数本身深入理解为什么JavaScript中函数是不能重载的：在JavaScript中，函数其实也是对象，函数名是关于函数的引用，或者说函数名本身就是变量。对于如下所示的函数声明与函数表达式，其实含以上是一样的（在不考虑函数声明与函数表达式区别的前提下），非常有利于我们理解JavaScript中函数是不能重载的这一特性。
+		
+		注意：严格模式下，callee不可用
 
 -  对JSON的了解？
 
