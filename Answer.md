@@ -945,7 +945,7 @@ HTML5?
 		
 - JavaScript的stopImmediatePropagation 与 stopPropagation 不同之处
 
-<button onclick="console.log('target')">CLICK ME</button>
+		<button onclick="console.log('target')">CLICK ME</button>
 
 		document.addEventListener('click', function(e) {
 		    console.log('bubble');
@@ -1150,6 +1150,15 @@ HTML5?
 		另外，从JavaScript函数本身深入理解为什么JavaScript中函数是不能重载的：在JavaScript中，函数其实也是对象，函数名是关于函数的引用，或者说函数名本身就是变量。对于如下所示的函数声明与函数表达式，其实含以上是一样的（在不考虑函数声明与函数表达式区别的前提下），非常有利于我们理解JavaScript中函数是不能重载的这一特性。
 		
 		注意：严格模式下，callee不可用
+
+-  JavaScript 中的 constructor
+
+Object.prototype.constructor：
+
+		返回一个指向创建了该对象原型的函数引用。需要注意的是，该属性的值是那个函数本身，而不是一个包含函数名称的字符串。
+		所有对象都会从它的原型上继承一个 constructor 属性。
+		注意：constructor是可被改变的。它仅仅是对象上的属性，返回的值不一定真实。
+	[constructor](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/constructor)
 
 -  对JSON的了解？
 
@@ -1491,6 +1500,7 @@ HTML5?
 			    不可以使用原型链寻找到age参数，因为student的原型person里没有age
 			}*/
 		
+			//最关键的一句
 			Student.prototype = new Person(name);
 			
 - 阅读javascript代码，回答问题(输出是什么，为什么？)
