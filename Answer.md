@@ -943,7 +943,41 @@ HTML5?
 		console.log(!!undefined); //true
 		console.log(!!void(0)); //false
 		
+- JavaScript的stopImmediatePropagation 与 stopPropagation 不同之处
 
+<button onclick="console.log('target')">CLICK ME</button>
+
+		document.addEventListener('click', function(e) {
+		    console.log('bubble');
+		});
+		
+		document.addEventListener('click', function(e) {
+		    console.log('capture');
+		    //e.stopImmediatePropagation();
+		}, true);
+	[代码](http://jsfiddle.net/FsJgb/)
+		请看文档里对event.stopImmediatePropagation()的描述：
+		
+		Keeps the rest of the handlers from being executed and prevents the event from bubbling up the DOM tree.
+		从这里可以看出，stopImmediatePropagation做了两件事情：
+		第一件事：阻止 绑定在事件触发元素的 其他同类事件的callback的运行，看他下面的例子就很明白：
+		
+		$("p").click(function(event) {
+		  event.stopImmediatePropagation();
+		});
+		$("p").click(function(event) {
+		  // 不会执行以下代码
+		  $(this).css("background-color", "#f00");
+		});
+		第二件事，阻止事件传播到父元素，这跟stopPropagation的作用是一样的。
+		
+		所以文档里面还有这么一句话：
+		
+		.. this method also stops the bubbling by implicitly calling event.stopPropagation().
+		意思是说其实这个方法是调用了stopPropagation()方法的。
+		
+		stopImmediatePropagation比stopPropagation多做了第一件事情，这就是他们之间的区别
+				
 -  写一个通用的事件侦听器函数(机试题)。
 
 		       // event(事件)工具集，来源：github.com/markyun
@@ -1654,6 +1688,7 @@ Facebook 插件js jdk写法
 		主要就是通过上次文本或者访问url是注入js代码（或经过编码的js代码），达到转移访问地址，
 		获取session等信息，注入数据库等功能
 [例子](http://www.cnblogs.com/bangerlee/archive/2013/04/06/3002142.html)
+[XSS防护](http://fex.baidu.com/blog/2014/06/xss-frontend-firewall-1/)
 
 - http 304状态码的原理
 		
