@@ -1662,6 +1662,15 @@ Facebook 插件js jdk写法
 
 - 你有用过哪些前端性能优化的方法？
 
+			减少http请求：整合文件js,css , 雪碧图
+			减少http请求内容大小：js压缩图片，压缩js css
+			缓存：cookies localstorage 304 浏览器缓存CACHE文件配置 缓存ajax
+			合理放置文件
+			高性能的js：避免eval() 、for in 、 重绘页面、变量声明、合理闭包
+			减少DOM、CDN、 Gzip、多域名、无 Cookie服务器
+	 
+	
+
 - http状态码有那些？分别代表是什么意思？
 
 - 一个页面从输入 URL 到页面加载显示完成，这个过程中都发生了什么？（流程说的越详细越好）
@@ -1705,6 +1714,9 @@ Facebook 插件js jdk写法
 	[GabrielchenCN](http://www.cnblogs.com/gabrielchen/)
 
 - 对前端安全有什么看法？
+
+		xss  脚本入侵  csrf  跨站请求伪造
+		csp 最好用
 
 
 - 最近在学什么东西吗？
