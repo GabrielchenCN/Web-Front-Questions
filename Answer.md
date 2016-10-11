@@ -1600,9 +1600,15 @@ Facebook 插件js jdk写法
 		易学 Gulp的核心API只有5个，掌握了5个API就学会了Gulp，之后便可以通过管道流组合自己想要的任务。
 	[原文](https://segmentfault.com/a/1190000002491282)
 
+- webpack 了解吗？
+
 - 知道nginx吗？ 干什么用的？
 
 	[知乎介绍](http://www.zhihu.com/question/21483073)
+
+- Elasticsearch 了解吗？
+
+
 
 - 输入url到显示页面发生了什么？
 
@@ -1694,6 +1700,10 @@ Facebook 插件js jdk写法
 
 - Git知道branch, diff, merge么?
 
+	branch 分支
+	diff 检查两个分支的不同
+	merge 合并分支
+
 - 如何设计突发大规模并发架构？
 
 - 当团队人手不足，把功能代码写完已经需要加班的情况下，你会做前端代码的测试吗？
@@ -1701,6 +1711,8 @@ Facebook 插件js jdk写法
 - 说说最近最流行的一些东西吧？平时常去哪些网站？
 
 - 知道什么是SEO并且怎么优化么? 知道各种meta data的含义么?
+
+[!!HTML head 头标签 非常好的文章](http://fex.baidu.com/blog/2014/10/html-head-tags/?qq-pf-to=pcqq.c2c)
 
 - 移动端（Android IOS）怎么做好用户体验?
 
@@ -1717,7 +1729,7 @@ Facebook 插件js jdk写法
 - 对前端安全有什么看法？
 
 		xss  脚本入侵  csrf  跨站请求伪造
-		csp 最好用
+		csp(（内容安全策略）) 最好用，缺点:Eval及相关函数被禁用、内嵌的JavaScript代码将不会执行、只能通过白名单来加载远程脚本
 
 
 - 最近在学什么东西吗？
