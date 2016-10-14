@@ -30,7 +30,7 @@
 		DOCTYPE不存在或格式不正确会导致文档以兼容模式呈现。
 		（2）、标准（严格）模式的排版（HTML/CSS） 和JS运作模式都是以该浏览器支持的最高标准运行(接近w3c的标准)。在兼容（混杂）模式中，
 		页面以宽松的向后兼容的方式显示,模拟老式浏览器的行为以防止站点无法工作。
-                [DOCTYPE分析](http://www.cnblogs.com/lxin/archive/2013/02/18/2915344.html)
+[DOCTYPE分析](http://www.cnblogs.com/lxin/archive/2013/02/18/2915344.html)
 
 - HTML5 为什么只需要写 <!DOCTYPE HTML>？
 
@@ -260,6 +260,10 @@ HTML5?
 		Adobe Flash Socket 、 ActiveX HTMLFile (IE) 、 基于 multipart 编码发送 XHR 、 基于长轮询的 XHR
 
 - 页面可见性（Page Visibility）API 可以有哪些用途？
+
+	[API 介绍 部分返回过时](http://www.zhangxinxu.com/wordpress/2012/11/page-visibility-api-introduction-extend/)
+	[MDN Page_Visibility_API](https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API)
+
 - 页面渲染的过程？
 
 		1.解析HTML代码并生成一个 DOM 树。
@@ -281,6 +285,14 @@ HTML5?
 		4. Resize浏览器窗口、滚动页面
 		5. 读取元素的某些属性（offsetLeft、offsetTop、offsetHeight、offsetWidth、 scrollTop/Left/Width/Height、clientTop/Left/Width/Height、 getComputedStyle()、currentStyle(in IE))
 
+
+A repaint occurs when changes are made to an elements skin that changes visibility, but do not affect its layout.
+
+Examples of this include outline, visibility, or background color. According to Opera, repaint is expensive because the browser must verify the visibility of all other nodes in the DOM tree.
+
+A reflow is even more critical to performance because it involves changes that affect the layout of a portion of the page (or the whole page).
+
+
 [重构相关](http://www.blueidea.com/tech/web/2011/8365.asp)
 
 ## <a name='css'>CSS</a>
@@ -299,6 +311,17 @@ HTML5?
 		1vw = 750px/100 = 7.5 px。 或使用百分比宽度
 		9.vmin 和 vmax则关于视口高度和宽度两者的最小或者最大值。(即vmin =屏幕长宽小者，vmax=屏幕长宽大者)
 
+		
+
+
+[!!HTML head 头标签 非常好的文章](http://fex.baidu.com/blog/2014/10/html-head-tags/?qq-pf-to=pcqq.c2c)
+
+- vw vh:是浏览器内部宽度大小(window.innerWidth)？是整个浏览器的宽度大小(window.outerWidth)？还是显示器的宽度大小(screen.width)？
+
+	window.innerWidth
+
+	因chrome window.innerWidth和window.outerWidth值相同，使用ie9测试可以看到差别
+[视区相关单位vw, vh..简介以及可实际应用场景](http://www.zhangxinxu.com/wordpress/2012/09/new-viewport-relative-units-vw-vh-vm-vmin/)
 
 
 - CSS的常用单位 
@@ -325,6 +348,7 @@ HTML5?
 		<link rel="stylesheet" media="screen and (min-width:900px)" href="big.css" type="text/css" />
 		<link rel="stylesheet" media="screen and (min-width:600px) and (max-width:900px)" href="style.css" type="text/css" />
 	[Media](http://www.jb51.net/css/163299.html)
+	[各类型手机适配](https://css-tricks.com/snippets/css/media-queries-for-standard-devices/)
 
 - CSS选择符有哪些？哪些属性可以继承？
 
@@ -447,13 +471,20 @@ HTML5?
 
 
 - 请解释一下CSS3的Flexbox（弹性盒布局模型）,以及适用场景？
-
+		
+		较过时(需要浏览器前缀，老浏览器或手机系统可以用该属性兼容):
+		display:box
 		box-flex 属性规定框的子元素是否可伸缩其尺寸。
 		能够很好实现居中，浮动，对齐，显示次序等功能，但其向下兼容不很好，只适用于现代浏览器
+		2012 第五次草案:
+		display:flex
 
 - 用纯CSS创建一个三角形的原理是什么？
 
-		border的透明度+border的宽度，当border-top为透明，border-left有颜色时，在直角处形成一个45度角
+		1.首先把元素height和width设置为0；
+		2.border的透明度+border的宽度，当border-top为透明，border-left有颜色时，在直角处形成一个45度角
+	    3.角度不同只需要改变border不同的宽度
+	    *IE6设定边框颜色为transparent的时候是黑色所以border-type需要设定为dashed
 
 - 一个满屏 品 字布局 如何设计?
 
@@ -510,7 +541,11 @@ HTML5?
 
 - 为什么要初始化CSS样式。
 
+	 每个浏览器的默认样式不同
+
 - absolute的containing block计算方式跟正常流有什么不同？
+
+   脱离正常流存在，相对定位占据正常流位置，但是显示的位置是相对正常流的偏移
 
 - CSS里的visibility属性有个collapse属性值是干嘛用的？在不同浏览器下以后什么区别？
 
@@ -548,9 +583,36 @@ HTML5?
 
 - 请解释一下浮动和它的工作原理？清除浮动的技巧
 
+	  变block为inline元素,现在可以使用flex
+
+	  最简单
+	  clear:both
+		
+				
+	  .clearfix{
+	 	overflow: auto;
+ 	    zoom: 1;	//ie6 hack									
+	  }
+	  作用于浮动父元素	
+	  .outer {zoom:1;}    /*==for IE6/7 Maxthon2==*/
+	  .outer :after {clear:both;content:'.';display:block;width: 0;height: 0;visibility:hidden;}   /*==for FF/chrome/opera/IE8==*/
+[clearfix:all about float](https://css-tricks.com/all-about-floats/)
+
+
+
 - 移动端的布局用过媒体查询吗？
 
 - 使用 CSS 预处理器吗？喜欢那个，Why？
+
+	 less
+	 sass
+	 stylus 这个，语法简便
+
+- 使用 CSS 后处理器吗？喜欢那个，Why？
+
+     postCSS
+     rework
+     Autoprefixer
 
 - CSS优化、提高性能的方法有哪些？
 
@@ -566,7 +628,15 @@ HTML5?
 
 - 浏览器是怎样解析CSS选择器的？
 
+	 首先，对浏览器来说，ID 选择器 #xx 是最快的，其次是 class 选择器、html 元素选择器等。
+	 不推荐使用后台选择器，后代选择器是从右往左查找（#my div ul li 查找顺序li ul div #my）.
+	 原因：DOM树的结构来看，如果从左往右查找，会浪费时间在选择失败的回溯上面。
+	      
+[css解析顺序](https://segmentfault.com/q/1010000000713509)
+
 - 在网页中的应该使用奇数还是偶数的字体？为什么呢？
+
+	都可以，但尽量使用偶数，比较好处理页面间内容的大小关系。目前 12、13、14、15、16 px 其实都是很不错的正文字号。知乎和豆瓣的正文字号都是 13 px，而中文维基百科的正文字号是 15 px，并没有什么不好。ie6不渲染13px字体。
 
 - margin和padding分别适合什么场景使用？
 
@@ -595,6 +665,8 @@ HTML5?
 - position:fixed;在android下无效怎么处理？
 
 - 如果需要手动写动画，你认为最小时间间隔是多久，为什么？（阿里）
+
+	1/60 再小浏览器也没办法渲染？
 
 - display:inline-block 什么时候会显示间隙？(携程)
 
@@ -639,7 +711,7 @@ HTML5?
 - 什么是Cookie 隔离？（或者说：请求资源的时候不要让它带cookie怎么做）
 
 		如果静态文件都放在主域名下，那静态文件请求的时候都带有的cookie的数据提交给server的，非常浪费流量，
-		所以不如隔离开。
+		所以不如隔离开。即把静态资源放在其它域名下。
 		
 		因为cookie有域的限制，因此不能跨域提交请求，故使用非主要域名的时候，请求头中就不会带有cookie数据，
 		这样可以降低请求头的大小，降低请求时间，从而达到降低整体请求延时的目的。
@@ -1654,6 +1726,10 @@ Facebook 插件js jdk写法
 - 设计模式 知道什么是singleton, factory, strategy, decrator么?
 
 - 常使用的库有哪些？常用的前端开发工具？开发过什么应用或组件？
+
+   backbone.js jquery vue.js express.js mongoose.js
+   webpack
+   stylus
 
 - 页面重构怎么操作？
 
