@@ -605,14 +605,13 @@ A reflow is even more critical to performance because it involves changes that a
 - 使用 CSS 预处理器吗？喜欢那个，Why？
 
 	 less
-	 sass
+	 sass:提供 variables, nested rules, mixins, inline imports
 	 stylus 这个，语法简便
 
 - 使用 CSS 后处理器吗？喜欢那个，Why？
 
-     postCSS
+     postCSS/Autoprefixer 自动添加前缀，或者去掉过时的前缀等
      rework
-     Autoprefixer
 
 - CSS优化、提高性能的方法有哪些？
 
@@ -654,9 +653,14 @@ A reflow is even more critical to performance because it involves changes that a
 
 - 你对line-height是如何理解的？
 
-- 设置元素浮动后，该元素的display值是多少？（自动变成display:block）
+- 设置元素浮动后，该元素的display值是多少？
+
+	（自动变成display:block）
 
 - 怎么让Chrome支持小于12px 的文字？
+
+     -webkit-text-size-adjust:none;
+     现在不支持了
 
 - 让页面里的字体变清晰，变细用CSS怎么做？（-webkit-font-smoothing: antialiased;）
 
@@ -784,7 +788,27 @@ A reflow is even more critical to performance because it involves changes that a
 		 
 		  return ret
 		}
-	[数组去重](http://blog.jobbole.com/33099/)
+		//利用hash
+
+		function unique(arr) {
+		  var ret = []
+		  var hash = {}
+		 
+		  for (var i = 0; i < arr.length; i++) {
+		    var item = arr[i]
+		    var key = typeof(item) + item
+		    if (hash[key] !== 1) {
+		      ret.push(item)
+		      hash[key] = 1
+		    }
+		  }
+		 
+		  return ret
+		}
+		//es6
+		var uniqueArr = new Set(arr);
+
+[数组去重](http://blog.jobbole.com/33099/)
 
 -  介绍JavaScript的基本数据类型。
 
@@ -913,9 +937,11 @@ A reflow is even more critical to performance because it involves changes that a
   
 		target	返回触发此事件的元素（事件的目标节点）。
 		（event.target 属性在实现事件代理时会被用到。）
-		currentTarget	返回其事件监听器触发该事件的元素
+		currentTarget	返回其事件监听器触发该事件的元素，一般即为事件代理的父元素
 		（该属性总是指向被绑定事件处理器的元素，将同一个事件处理器绑定到多个元素）。
-		对于IE8及其以下均要做兼容处理
+		对于IE8及其以下均要做兼容处理(srcElement)
+
+
 
 -  解释一下Javascript的事件代理？
  		
@@ -926,7 +952,19 @@ A reflow is even more critical to performance because it involves changes that a
 			
 			DOM操作是十分消耗性能的。所以重复的事件绑定简直是性能杀手。
 			
-			而事件代理的核心思想，就是通过尽量少的绑定，去监听尽量多的事件。
+			而事件代理的核心思想，就是通过尽量少的绑定，去监听尽量多的事件。并且对于新增加的元素因为使用事件代理也可以触发事件
+
+			window.onload = function(){
+			　　var oUl = document.getElementById("ul1");
+			　　oUl.onclick = function(ev){
+			　　　　var ev = ev || window.event;
+			　　　　var target = ev.target || ev.srcElement;
+			　　　　if(target.nodeName.toLowerCase() == 'li'){
+			　 　　　　　　	alert(123);
+			　　　　　　　  alert(target.innerHTML);
+			　　　　}
+			　　}
+			}
 
 -  如何创建一个对象? （画出此对象的内存图）
 
@@ -981,6 +1019,9 @@ A reflow is even more critical to performance because it involves changes that a
 
 		Instanceof的判断队则是：沿着A的__proto__这条线来找，同时沿着B的prototype这条线来找，如果两条线能找到同一个引用，即同一个对象，那么就返回true。如果找到终点还未重合，则返回false。
 
+[MDN typeof](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof)
+[MDN instanceof](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/instanceof)
+
 -  如何判断对象是不是Function?
 
 		function isFunction(obj) {  
@@ -997,6 +1038,7 @@ A reflow is even more critical to performance because it involves changes that a
 		然Array继承自Object，也会有toString方法，但是这个方法有可能会被改写而达不到我们的要求，
 		而Object.prototype则是老虎的屁股，很少有人敢去碰它的，所以能一定程度保证其“纯洁性”：）
 
+-  new 操作符发生了什么？
 
 -  href="javascript:; onclick="javascript:return false;" 这样写的作用是什么？
 
@@ -1155,12 +1197,38 @@ A reflow is even more critical to performance because it involves changes that a
 		事件捕获
 		当你使用事件捕获时，父级元素先触发，子级元素后触发，即div先触发，p后触发。
 
+-  阻止冒泡和阻止事件的默认行为
+	
+	阻止冒泡：由于浏览器的事件行为可能是事件冒泡，有时需要防止事件响应在不想响应的父元素上。
+	阻止事件的默认行为：有时候用户的操作未满足某些条件时，需要阻止某些元素的默认行为，如链接的跳转和表单的提交等。
+
+	function stopBubble(e) { 
+	//如果提供了事件对象，则这是一个非IE浏览器 
+	if ( e && e.stopPropagation ) 
+	    //因此它支持W3C的stopPropagation()方法 
+	    e.stopPropagation(); 
+	else
+	    //否则，我们需要使用IE的方式来取消事件冒泡 
+	    window.event.cancelBubble = true; 
+	}	
+
+	//阻止浏览器的默认行为 
+	function stopDefault( e ) { 
+	    //阻止默认浏览器动作(W3C) 
+	    if ( e && e.preventDefault ) 
+	        e.preventDefault(); 
+	    //IE中阻止函数器默认动作的方式 
+	    else
+	        window.event.returnValue = false; 
+	    return false; 
+	}
+	//jquery 中直接return false 就可以取消浏览器默认行为。
 
 -  什么是闭包（closure），为什么要用它？
 
 		解决从外部读取函数内部变量的问题，因为JavaScript的作用域是函数作用域
 		且查找变量的方式是从内往外查找（"链式作用域"结构chain scope）。
-		闭包就是能够读取其他函数内部变量的函数。
+		闭包就是能够读取其他函数内部变量的函数。如果一个函数访问了它的外部变量，那么它就是一个闭包。
 		用途：一个是前面提到的可以读取函数内部的变量，另一个就是让这些变量的值始终保持在内存中。
 		使用闭包的注意点
 		1）由于闭包会使得函数中的变量都被保存在内存中，内存消耗很大，所以不能滥用闭包，
@@ -1168,8 +1236,35 @@ A reflow is even more critical to performance because it involves changes that a
 		解决方法是，在退出函数之前，将不使用的局部变量全部删除。
 		2）闭包会在父函数外部，改变父函数内部变量的值。所以，如果你把父函数当作对象（object）使用，
 		把闭包当作它的公用方法（Public Method），把内部变量当作它的私有属性（privatevalue），这时
-		一定要小心，不要随便改变父函数内部变量的值。
+		一定要小心，不要随便改变父函数内部变量的值。如下例子
 
+		   上面的x是一个字面值（值传递），和JS里其他的字面值一样，当调用foo时，实参x的值被复制了一份，复制的那一份作为了foo的参数x。
+		　　那么问题来了，JS里处理object时是用到引用传递的，那么，你调用foo时传递一个object，foo函数return的闭包也会引用最初那个object！
+		function foo(x) {
+		var tmp = 3;
+		return function (y) {
+		    alert(x + y + tmp);
+		    x.memb = x.memb ? x.memb + 1 : 1;
+		    alert(x.memb);
+		    }
+		}
+		var age = new Number(2);
+		var bar = foo(age); // bar 现在是一个引用了age的闭包
+		bar(10);
+		　　不出我们意料，每次运行bar(10)，x.memb都会自加1。但需要注意的是x每次都指向同一个object变量——age，运行两次bar(10)后，age.memb会变成2.
+
+		工程使用：
+		setTimeout 传参数
+
+		function closureExample(objID, text, timedelay) { 
+		    setTimeout(function() { 
+		        document.getElementById(objID).innerHTML = text; 
+		    }, timedelay); 
+		} 
+		closureExample(‘myDiv’, ‘Closure is created’, 500);
+
+[闭包浅析](http://www.cnblogs.com/frankfang/archive/2011/08/03/2125663.html)
+[闭包面试题](http://www.cnblogs.com/frankfang/archive/2011/08/03/2125663.html)
 
 -  "use strict";是什么意思 ? 使用它的有什么好处或坏处？
 
@@ -1297,6 +1392,15 @@ Object.prototype.constructor：
 
 -  谈一谈你对ECMAScript6的了解？
 
+	* 箭头函数
+	* class
+	* module
+	* promise
+	* yield
+	* array的更多结构
+	* let const
+
+
 -  ECMAScript6 怎么写class么，为什么会出现class这种东西? 
 
 -  AMD（Modules/Asynchronous-Definition）、CMD（Common Module Definition）规范区别？
@@ -1309,10 +1413,32 @@ Object.prototype.constructor：
 
 -  异步加载的方式有哪些？
 
--  .call() 和 .apply() 的区别？
+-  .call() 和 .apply() 的区别？ 那bind()呢？
 
-		 call 的第二个参数可以是任意类型，而apply的第二个参数必须是数组
+		 call 的第二个参数可以是任意类型，而apply的第二个参数必须是数组。
+		 call和apply，是在·调用·函数时改变函数的作用对象，即会立即作用。
+		 bind，是·引用·函数时改变函数的作用对象，会生成一个新的函数。传入参数和call一样。即会永久的返回一个新函数，其的this，会被bind的第一个参数改变。
 
+-  手动实现Function.bind()
+
+		Function.prototype.bind = function(context){
+		  var args = Array.prototype.slice(arguments, 1),
+		  F = function(){},
+		  self = this,
+		  bound = function(){
+		      var innerArgs = Array.prototype.slice.call(arguments);
+		      var finalArgs = args.concat(innerArgs);
+		      return self.apply((this instanceof F ? this : context), finalArgs);
+		  };
+
+		  F.prototype = self.prototype;
+		  bound.prototype = new F();
+		  retrun bound;
+		};
+
+[Javascript中bind()方法的使用与实现](https://segmentfault.com/a/1190000002662251)
+
+-  柯里化函数是什么？javascript的函数柯里化
 
 -  JavaScript中的作用域与变量声明提升？
 
@@ -1421,6 +1547,15 @@ Object.prototype.constructor：
    
 
 -  Node.js的适用场景？
+
+	总结起来node有以下几个特点:简单强大，轻量可扩展．简单体现在node使用的是javascript,json来进行编码，人人都会；强大体现在非阻塞IO,可以适应分块传输数据，较慢的网络环境，尤其擅长高并发访问；轻量体现在node本身既是代码，又是服务器，前后端使用统一语言;可扩展体现在可以轻松应对多实例，多服务器架构，同时有海量的第三方应用组件
+
+[nodeJs相关问题](https://github.com/jimuyouyou/node-interview-questions#nodeCore)
+[nodeJs 练习](http://hr.tuputech.com/recruit/tree)
+
+-  Node.js 的事件驱动模型
+
+[事件驱动和异步I／O模型](http://www.open-open.com/lib/view/open1463877785001.html)
 
 -  (如果会用node)知道route, middleware, cluster, nodemon, pm2, server-side rendering么?
 -  解释一下 Backbone 的 MVC 实现方式？
@@ -1659,6 +1794,18 @@ Facebook 插件js jdk写法
 })(document,'script','facebook-jssdk');
 </script>		
 
+- setTimeout相关
+
+[从setTimeout谈JavaScript运行机制](http://www.cnblogs.com/zichi/p/4604053.html)
+
+- Event Loop相关
+
+[JavaScript 运行机制详解：再谈Event Loop](http://www.ruanyifeng.com/blog/2014/10/event-loop.html)
+
+- 补充题目
+
+[必须知道的25道javascript面试题](https://segmentfault.com/a/1190000004180569?_ea=523928)
+
 ## <a name='other'>其他问题</a>
 
 - gulp和grunt的比较
@@ -1745,12 +1892,37 @@ Facebook 插件js jdk写法
 
 - 你有用过哪些前端性能优化的方法？
 
-			减少http请求：整合文件js,css , 雪碧图
+			减少http请求：整合文件js,css , 雪碧图 
+			注意:
+			HTTP/2 通过多路复用大幅降低了多个请求的开销。通过数据分帧层，客户端和服务器之间只需要建立一个 TCP 连接，即可同时收发多个文件，而且，该连接在相当长的时间周期内保持打开（持久化），以便复用。
+
+            HTTP/2 的新特性意味着上述优化实践不再那么适用，但考虑到客户端对 HTTP/2 的支持覆盖程度，还需根据实际数据权衡。http2 仅仅支持https网址
+
+
 			减少http请求内容大小：js压缩图片，压缩js css
 			缓存：cookies localstorage 304 浏览器缓存CACHE文件配置 缓存ajax
 			合理放置文件
 			高性能的js：避免eval() 、for in 、 重绘页面、变量声明、合理闭包
-			减少DOM、CDN、 Gzip、多域名、无 Cookie服务器
+			减少DOM、使用CDN、 开启Gzip、多域名、无 Cookie服务器
+
+[前端性能优化最佳实践](https://csspod.com/frontend-performance-best-practices/)
+
+- CDN原理
+
+	CDN的全称是Content Delivery Network，即内容分发网络。
+	原理：用户在自己的浏览器中输入要访问的网站的域名，浏览器向本地DNS请求对该域名的解析，本地DNS将请求发到网站的主DNS，主DNS根据一系列的策略确定当时最适当的CDN节点，并将解析的结果（IP地址）发给用户，用户向给定的CDN节点请求相应网站的内容。
+	不足：内容实时性
+
+- http/2 的新特性
+
+    保持与HTTP 1.1语义的向后兼容性也是该版本的一个关键目标。SPDY是一种HTTP兼容协议，由Google发起，Chrome、Opera、Firefox以及Amazon Silk等浏览器均已提供支持。HTTP实现的瓶颈之一是其并发要依赖于多重连接。HTTP管线化技术可以缓解这个问题，但也只能做到部分多路复用。此外，已经证实，由于存在中间干扰，浏览器无法采用管线化技术。SPDY在单个连接之上增加了一个帧层，用以多路复用多个并发流。帧层针对HTTP类的请求响应流进行了优化，因此运行在HTTP之上的应用，对应用开发者而言只要很小的修改甚至无需修改就可以运行在SPDY之上。SPDY对当前的HTTP协议有4个改进：
+	多路复用请求Multipexing；当流并发时，就会涉及到流的优先级和依赖。优先级高的流会被优先发送。图片请求的优先级要低于 CSS 和 SCRIPT。
+	对请求划分优先级；
+	采用 HPACK 进行压缩HTTP头；
+	服务器推送流（即Server Push技术）；
+	SPDY试图保留HTTP的现有语义，所以cookies、ETags等特性都是可用的
+	HTTP/2 采用二进制格式传输数据
+
 	 
 	
 
