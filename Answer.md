@@ -1,4 +1,4 @@
-#前端开发面试题 （答案）
+# 前端开发面试题 （答案）
 - 部分转载自：http://weibo.com/920802999
 - https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Questions-and-Answers
 
@@ -1040,6 +1040,15 @@ A reflow is even more critical to performance because it involves changes that a
 
 -  new 操作符发生了什么？
 
+```
+var obj = new MyObject();
+
+=>
+var obj = {};
+obj.__proto__ = MyObject.prototype;
+MyObject.call(obj);
+```
+
 -  href="javascript:; onclick="javascript:return false;" 这样写的作用是什么？
 
 		href="javascript:;" 阻止浏览器默认操作
@@ -1335,6 +1344,8 @@ Object.prototype.constructor：
 })` 能解释一下这段代码的意思吗？
 
 -  js延迟加载的方式有哪些？
+
+	defer/async
 
 -  ajax是什么，解释一下它的工作原理?
 
